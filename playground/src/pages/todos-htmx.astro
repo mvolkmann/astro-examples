@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+// const res = await fetch("http://localhost:4321/todos-html");
+// const html = await res.text();
+---
+
+<Layout title="todo">
+  <main class="m-4">
+    <h1>Welcome to Astro</h1>
+    <h1>Todos</h1>
+    <button hx-get="/todos-html" hx-target="#todos">Load Todos</button>
+    <!-- <p set:html={html} /> -->
+    <!-- <div hx-trigger="revealed" hx-get="/todos-html"></div> -->
+    <div id="todos"></div>
+  </main>
+</Layout>
