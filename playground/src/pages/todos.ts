@@ -1,6 +1,6 @@
 import type { APIContext } from "astro";
 
-let lastId = 0;
+let lastId = 0; // use by addTodo and POST functions
 
 type Todo = {
   id: number;
@@ -14,11 +14,11 @@ if (!globalThis.todoMap) {
   globalThis.todoMap = new Map<number, Todo>();
 }
 
+// Add some initial todos.
 function addTodo(text: string) {
   const todo = { id: ++lastId, text, completed: false };
   globalThis.todoMap.set(todo.id, todo);
 }
-
 addTodo("buy milk");
 addTodo("cut grass");
 
@@ -38,27 +38,29 @@ async function getBody(request: Request): Promise<string> {
   return text;
 }
 
-// params is an object containing properties
-// that match the dynamic segments of the route.
-//
-// props is an object containing properties
-// supplied by the getStaticPaths function.
-// This is only available in server-side rendering.
-//
-// request is a Request object that contains
-// the method, url, headers, and body.
-//
-// Additional properties in an APIContext object include
-// clientAddress, cookies, generator, locals, redirect, site, and url.
-export async function GET({ params, props, request }: APIContext) {
-  const res = new Response(JSON.stringify([...globalThis.todoMap.values()]), {
-    status: 200,
+export async function GET() {
+  const todos = [...globalThis.todoMap.values()];
+  return new Response(JSON.stringify(todos), {
     headers: { "Content-Type": "application/json" },
   });
-  return res;
 }
 
-export async function POST({ params, request }: APIContext) {
+// The APIContext object contains the following properties:
+// - params: an object containing properties
+//   that match the dynamic segments of the route.
+// - props: an object containing properties
+//   supplied by the getStaticPaths function
+//   (only available in server-side rendering)
+// - request: a Request object that contains
+//   the method, url, headers, and body
+// - clientAddress
+// - cookies
+// - generator
+// - locals
+// - redirect
+// - site
+// - url
+export async function POST({ request }: APIContext) {
   const text = await getBody(request);
   const todo = JSON.parse(text) as Todo;
   if (todo.completed === undefined) todo.completed = false;
