@@ -7,7 +7,9 @@ type Todo = {
   text: string;
   completed: boolean;
 };
-
+declare global {
+  var todoMap: Map<number, Todo>;
+}
 if (!globalThis.todoMap) {
   globalThis.todoMap = new Map<number, Todo>();
 }
