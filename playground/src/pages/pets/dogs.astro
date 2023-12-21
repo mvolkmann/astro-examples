@@ -4,29 +4,19 @@ import Layout from "../../layouts/Layout.astro";
 import Dog from "../../components/Dog.astro";
 
 const dogs: CollectionEntry<"dogs">[] = await getCollection("dogs");
-// console.log("dogs.astro : dogs =", dogs);
 
-const entry = await getEntry("dogs", "Comet");
-console.log("dogs.astro : entry =", entry);
+/*
+// The second argument of getEntry must be lowercase
+// even if the Markdown filename uses uppercase.
+const entry = await getEntry("dogs", "comet");
 if (entry) {
   const { Content, headings } = await entry?.render();
-  console.log("dogs.astro : headings =", headings);
-  console.log("dogs.astro : Content =", Content);
 }
+*/
 ---
 
 <Layout title="Welcome to Astro">
   <main class="m-4">
-    {
-      dogs.map((dog) => (
-        <Dog
-          content={dog.body.trim()}
-          name={dog.data.name}
-          breed={dog.data.breed}
-          website={dog.data.website}
-        />
-      ))
-    }
-    <!-- <Content /> -->
+    {dogs.map((dog) => <Dog dog={dog} />)}
   </main>
 </Layout>

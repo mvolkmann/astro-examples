@@ -4,8 +4,10 @@ breed: "Whippet"
 website: https://www.akc.org/dog-breeds/whippet/
 ---
 
-Comet loves the following:
+He loves the following:
 
 - pool balls
 - basketballs
 - frisbees
+
+![Whippet](https://www.akc.org/wp-content/uploads/2017/11/Whippet-On-White-01.jpg)
