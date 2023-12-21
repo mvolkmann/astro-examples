@@ -2,7 +2,14 @@
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Dog from "../../components/Dog.astro";
+import { string } from "astro/zod";
 
+/*
+Note how the generic type parameter here is a literal string.
+This is useful for creating types that are specific to certain values.
+This is used in scenarios like type-safe routing,
+state management, and handling collection entities.
+*/
 const dogs: CollectionEntry<"dogs">[] = await getCollection("dogs");
 
 /*
