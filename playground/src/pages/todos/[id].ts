@@ -20,22 +20,6 @@ if (!globalThis.todoMap) {
   globalThis.todoMap = new Map<number, Todo>();
 }
 
-// See https://davetayls.me/blog/2023-05-21-convert-a-readablestream-to-a-string-in-javascript.
-async function getBody(request: Request): Promise<string> {
-  const { body } = request;
-  let text = "";
-  if (body) {
-    const reader = body.getReader();
-    const decoder = new TextDecoder();
-    while (true) {
-      const { value, done } = await reader.read();
-      if (value) text += decoder.decode(value);
-      if (done) break;
-    }
-  }
-  return text;
-}
-
 export async function GET({ params }: APIContext) {
   const { id } = params;
   const idNumber = Number(id);
@@ -47,8 +31,7 @@ export async function GET({ params }: APIContext) {
 export async function PUT({ params, request }: APIContext) {
   const { id } = params;
   const idNumber = Number(id);
-  const text = await getBody(request);
-  const todo = JSON.parse(text) as Todo;
+  const todo = await request.json();
   todo.id = idNumber; // ensures the id matches the path parameter
   const exists = globalThis.todoMap.has(idNumber);
   if (exists) globalThis.todoMap.set(idNumber, todo);
@@ -59,8 +42,7 @@ export async function PUT({ params, request }: APIContext) {
 export async function PATCH({ params, request }: APIContext) {
   const { id } = params;
   const idNumber = Number(id);
-  const text = await getBody(request);
-  const updates = JSON.parse(text) as Todo;
+  const updates = await request.json();
   updates.id = idNumber; // ensures the id matches the path parameter
   let todo = globalThis.todoMap.get(idNumber);
   if (todo) {

@@ -22,22 +22,6 @@ function addTodo(text: string) {
 addTodo("buy milk");
 addTodo("cut grass");
 
-async function getBody(request: Request): Promise<string> {
-  const { body } = request;
-  let text = "";
-  if (body) {
-    // See https://davetayls.me/blog/2023-05-21-convert-a-readablestream-to-a-string-in-javascript.
-    const reader = body.getReader();
-    const decoder = new TextDecoder();
-    while (true) {
-      const { value, done } = await reader.read();
-      if (value) text += decoder.decode(value);
-      if (done) break;
-    }
-  }
-  return text;
-}
-
 export async function GET() {
   const todos = [...globalThis.todoMap.values()];
   return new Response(JSON.stringify(todos), {
@@ -61,8 +45,7 @@ export async function GET() {
 // - site
 // - url
 export async function POST({ request }: APIContext) {
-  const text = await getBody(request);
-  const todo = JSON.parse(text) as Todo;
+  const todo = await request.json();
   if (todo.completed === undefined) todo.completed = false;
   const id = ++lastId;
   todo.id = id;
