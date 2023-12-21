@@ -5,8 +5,6 @@
 
 import type { APIContext } from "astro";
 
-let lastId = 0;
-
 type Todo = {
   id: number;
   text: string;
