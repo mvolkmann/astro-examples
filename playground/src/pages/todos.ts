@@ -1,6 +1,6 @@
 import type { APIContext } from "astro";
 
-let lastId = 0; // use by addTodo and POST functions
+let lastId = 0; // used by addTodo and POST functions
 
 type Todo = {
   id: number;
