@@ -24,7 +24,9 @@ const { title } = Astro.props;
       }
     </style>
   </head>
-  <body class="p-4" transition:animate={slide({ duration: '1s' })}>
+  <!-- We probably don't want both a slide transition and image morphing. -->
+  <!-- <body class="p-4" transition:animate={slide({ duration: '1s' })}> -->
+  <body class="p-4">
     <slot />
   </body>
 </html>
