@@ -1,8 +1,3 @@
-// This file defines dynamic routes where path parameters are used.
-// In this case the path parameter is the id of a todo.
-// Dynamic routes require enabling SSR.
-// To do this, enter "npx astro add node".
-
 import type { APIContext } from "astro";
 import { todoMap } from "../todos-state.ts";
 
