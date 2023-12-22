@@ -8,7 +8,12 @@ import Layout from "../layouts/Layout.astro";
   <h1>Astro View Transitions Demo</h1>
   <Image alt="whippet" class="img" src={whippet} transition:name="my-img" />
   <a href="detail">Detail</a>
-  <video controls width="200" transition:name="my-video">
+  <audio
+    controls
+    src="/sample.mp3"
+    transition:name="my-audio"
+    transition:persist></audio>
+  <video controls width="200" transition-name="my-video" transition:persist>
     <source src="/bunny-video.mp4" type="video/mp4" />
   </video>
 </Layout>
