@@ -1,10 +1,15 @@
 ---
 import { Image } from "astro:assets";
+// This import doesn't work, but including it
+// with a script tag in Layout.astro does work.
+// See https://github.com/catdad/canvas-confetti/.
+import confetti from "canvas-confetti";
 import logo1 from "/src/images/astro-logo.png";
 import logo2 from "../images/astro-logo.svg";
 import Layout from "../layouts/Layout.astro";
 
 // import dogs from "../data/dogs.json";
+/* global confetti */
 ---
 
 <Layout title="Welcome to Astro">
@@ -20,10 +25,16 @@ import Layout from "../layouts/Layout.astro";
   </main>
 </Layout>
 
+<!-- <script type="module"> -->
 <script>
   function handleClick() {
-    alert("got click");
+    confetti({
+      particleCount: 100,
+      spread: 180,
+      origin: { y: 1 },
+    });
   }
+
   const myBtn = document.getElementById("my-btn");
   if (myBtn) myBtn.addEventListener("click", handleClick);
 </script>
