@@ -20,10 +20,6 @@ button:hover {
   color: black;
 }
 
-.dog img {
-  width: 200px;
-}
-
 /* Tailwind removes styling of hr elements. */
 hr {
   border-bottom: 1px solid gray;

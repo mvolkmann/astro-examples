@@ -1,4 +1,4 @@
-import type { APIContext } from "astro";
+// import type { APIContext } from "astro";
 import type { APIRoute } from "astro";
 
 export function getStaticPaths() {

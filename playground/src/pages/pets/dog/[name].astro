@@ -1,0 +1,43 @@
+---
+import { getEntry } from "astro:content";
+import { slide } from "astro:transitions";
+import Layout from "/src/layouts/Layout.astro";
+
+const { name } = Astro.params;
+
+// The second argument of getEntry must be lowercase
+// even if the Markdown filename uses uppercase.
+const entry = await getEntry("dogs", name.toLowerCase());
+console.log("[name].astro : entry =", entry);
+let Content;
+let breed = "";
+let image = "";
+if (entry) {
+  ({ breed, image } = entry.data);
+  ({ Content } = await entry?.render());
+}
+---
+
+<Layout title={name} transition:animate={slide({ duration: "2s" })}>
+  <main class="dog my-4">
+    <p class="font-bold mb-4">{name} is a {breed}.</p>
+    <div class="img-container">
+      <img alt="breed photo" src={image} transition:name={name + "-img"} />
+    </div>
+    <Content />
+  </main>
+</Layout>
+
+<style is:global>
+  .dog li {
+    list-style-type: disc;
+    margin-left: 1.2rem;
+  }
+</style>
+
+<style>
+  img {
+    height: auto;
+    width: 40rem;
+  }
+</style>

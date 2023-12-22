@@ -5,8 +5,9 @@ const string = z.string();
 const dogs = defineCollection({
   type: "content",
   schema: z.object({
-    name: string,
     breed: string,
+    name: string,
+    image: string,
     website: string,
   }),
 });

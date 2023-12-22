@@ -1,8 +1,8 @@
 ---
-import { getCollection, getEntry, type CollectionEntry } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import Dog from "../../components/Dog.astro";
-import { string } from "astro/zod";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { slide } from "astro:transitions";
+import Layout from "/src/layouts/Layout.astro";
+import Dog from "/src/components/Dog.astro";
 
 /*
 Note how the generic type parameter here is a literal string.
@@ -11,19 +11,10 @@ This is used in scenarios like type-safe routing,
 state management, and handling collection entities.
 */
 const dogs: CollectionEntry<"dogs">[] = await getCollection("dogs");
-
-/*
-// The second argument of getEntry must be lowercase
-// even if the Markdown filename uses uppercase.
-const entry = await getEntry("dogs", "comet");
-if (entry) {
-  const { Content, headings } = await entry?.render();
-}
-*/
 ---
 
-<Layout title="Welcome to Astro">
-  <main class="m-4">
+<Layout title="Dogs I Know" transition:animate={slide({ duration: "2s" })}>
+  <main>
     {dogs.map((dog) => <Dog dog={dog} />)}
   </main>
 </Layout>

@@ -1,25 +1,24 @@
 ---
 import type { CollectionEntry } from "astro:content";
+
 interface Props {
   dog: CollectionEntry<"dogs">;
 }
 
 const { dog } = Astro.props;
-const { breed, name, website } = dog.data;
-const { Content } = await dog.render();
+const { breed, image, name } = dog.data;
 ---
 
 <div class="dog my-4">
   <hr class="mb-4" />
-  <p class="font-bold mb-4">{name} is a {breed}.</p>
-  <Content />
-  <!-- <p set:html="{content}" /> -->
-  <a href={website}>American Kennel Club</a>
+  <p class="font-bold mb-4">{name}, the {breed}</p>
+  <img alt="breed photo" src={image} transition:name={name + "-img"} />
+  <a href={"/pets/dog/" + name}>Detail</a>
 </div>
 
-<style is:global>
-  .dog li {
-    list-style-type: disc;
-    margin-left: 1.2rem;
+<style>
+  img {
+    height: auto;
+    width: 10rem;
   }
 </style>
