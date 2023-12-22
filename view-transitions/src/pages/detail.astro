@@ -8,6 +8,9 @@ import Layout from "../layouts/Layout.astro";
   <h1>Astro View Transitions Demo</h1>
   <Image alt="whippet" class="img" src={whippet} transition:name="my-img" />
   <button id="back">Back</button>
+  <video controls width="400" transition:name="my-video">
+    <source src="/bunny-video.mp4" type="video/mp4" />
+  </video>
 </Layout>
 
 <!-- Specifying that the type is module is important
@@ -21,10 +24,17 @@ import Layout from "../layouts/Layout.astro";
   }
 </script>
 
-<style>
+<style is:global>
   .img {
     display: block;
     height: 40rem;
     width: auto;
+  }
+</style>
+
+<style>
+  button {
+    display: block;
+    margin: 1rem 0;
   }
 </style>
