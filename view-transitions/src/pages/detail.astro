@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import whippet from "../images/whippet.webp";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Main">
+  <h1>Astro View Transitions Demo</h1>
+  <Image alt="whippet" class="img" src={whippet} />
+  <button id="back">Back</button>
+</Layout>
+
+<script>
+  const back = document.getElementById("back");
+  if (back) {
+    back.addEventListener("click", () => {
+      window.history.back();
+    });
+  }
+</script>
+
+<style>
+  .img {
+    display: block;
+    height: 40rem;
+    width: auto;
+  }
+</style>
