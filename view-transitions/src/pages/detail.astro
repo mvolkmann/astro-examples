@@ -4,13 +4,15 @@ import whippet from "../images/whippet.webp";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Main">
+<Layout title="Detail">
   <h1>Astro View Transitions Demo</h1>
   <Image alt="whippet" class="img" src={whippet} />
   <button id="back">Back</button>
 </Layout>
 
-<script>
+<!-- Specifying that the type is module is important
+     so the script runs every time the page is loaded. -->
+<script type="module">
   const back = document.getElementById("back");
   if (back) {
     back.addEventListener("click", () => {
