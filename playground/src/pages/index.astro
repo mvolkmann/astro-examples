@@ -1,9 +1,12 @@
 ---
 import { Image } from "astro:assets";
+
 // This import doesn't work, but including it
 // with a script tag in Layout.astro does work.
-// See https://github.com/catdad/canvas-confetti/.
-import confetti from "canvas-confetti";
+// See https://github.com/catdad/canvas-confetti/issues/220.
+// @ts-ignore
+// import confetti from "canvas-confetti";
+
 import logo1 from "@images/astro-logo.png";
 import logo2 from "@images/astro-logo.svg";
 import Layout from "@layouts/Layout.astro";
@@ -28,6 +31,7 @@ import Layout from "@layouts/Layout.astro";
 <!-- <script type="module"> -->
 <script>
   function handleClick() {
+    // @ts-ignore
     confetti({
       particleCount: 100,
       spread: 180,
