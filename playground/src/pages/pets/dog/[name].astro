@@ -1,14 +1,15 @@
 ---
 import { getEntry } from "astro:content";
 import { slide } from "astro:transitions";
-import Layout from "/src/layouts/Layout.astro";
+// import Layout from "../../../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 
 const { name } = Astro.params;
+if (!name) throw new Error("Missing name parameter");
 
 // The second argument of getEntry must be lowercase
 // even if the Markdown filename uses uppercase.
 const entry = await getEntry("dogs", name.toLowerCase());
-console.log("[name].astro : entry =", entry);
 let Content;
 let breed = "";
 let image = "";
@@ -24,7 +25,7 @@ if (entry) {
     <div class="img-container">
       <img alt="breed photo" src={image} transition:name={name + "-img"} />
     </div>
-    <Content />
+    {Content && <Content />}
   </main>
 </Layout>
 

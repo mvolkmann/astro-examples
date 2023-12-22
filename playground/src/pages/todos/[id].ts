@@ -1,5 +1,5 @@
 import type { APIContext } from "astro";
-import { todoMap } from "../todos-state.ts";
+import { type Todo, todoMap } from "../todos-state.ts";
 
 export async function GET({ params }: APIContext) {
   const { id } = params;
@@ -27,14 +27,14 @@ export async function PATCH({ params, request }: APIContext) {
   updates.id = idNumber; // ensures the id matches the path parameter
   let todo = todoMap.get(idNumber);
   if (todo) {
-    todo = { ...todo, ...updates };
-    todoMap.set(idNumber, todo);
+    const patched = { ...todo, ...updates } as Todo;
+    todoMap.set(idNumber, patched);
   }
   const status = todo ? 200 : 404;
   return new Response(JSON.stringify(todo), { status });
 }
 
-export async function DELETE({ params, request }: APIContext) {
+export async function DELETE({ params }: APIContext) {
   const { id } = params;
   if (!id) return new Response('missing "id" parameter', { status: 400 });
 

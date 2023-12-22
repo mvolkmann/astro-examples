@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev --host",
+    "astro": "astro",
+    "check": "astro check",
     "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.3",
