@@ -1,0 +1,50 @@
+<main>
+  <p>
+    The Web site you seek
+    <br />
+     cannot be located, but
+    <br />
+     countless more exist.
+  </p>
+  <p>
+    No content was found at
+    <br />
+    <span id="path"></span>
+  </p>
+</main>
+
+<script>
+  const span = document.getElementById("path");
+  if (span) span.textContent = window.location.pathname;
+</script>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    height: 100vh;
+    width: 100vw;
+
+    background-color: linen;
+    color: cornflowerblue;
+    font-weight: bold;
+  }
+
+  hr {
+    width: 50%;
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  #path {
+    color: red;
+  }
+</style>

@@ -15,6 +15,6 @@ const dogs: CollectionEntry<"dogs">[] = await getCollection("dogs");
 
 <Layout title="Dogs I Know" transition:animate={slide({ duration: "2s" })}>
   <main>
-    {dogs.map((dog) => <Dog dog={dog} />)}
+    {dogs.map((dog) => <Dog {dog} />)}
   </main>
 </Layout>
