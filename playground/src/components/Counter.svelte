@@ -1,7 +1,8 @@
 <script>
   export let label = '';
+  export let start = 0;
 
-  let count = 0;
+  let count = start;
 </script>
 
 <div class="row">

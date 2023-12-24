@@ -27,8 +27,8 @@ import Layout from "@layouts/Layout.astro";
     <div class="mt-4">
       <button id="my-btn">Press Me</button>
     </div>
-    <Counter1 label="Alpine" />
-    <Counter2 label="Svelte" client:load />
+    <Counter1 label="Alpine" start={3} />
+    <Counter2 label="Svelte" start={3} client:load />
   </main>
 </Layout>
 

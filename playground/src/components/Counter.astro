@@ -1,12 +1,13 @@
 ---
 interface Props {
   label?: string;
+  start?: number;
 }
 
-const { label = "" } = Astro.props;
+const { label = "", start = 0 } = Astro.props;
 ---
 
-<div class="row" x-data="{ count: 0 }">
+<div class="row" x-data={`{ count: ${start} }`}>
   {label && <div>{label}</div>}
   <button :disabled="count <= 0" @click="count--">-</button>
   <h1 x-text="count"></h1>
