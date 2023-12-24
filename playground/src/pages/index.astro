@@ -7,7 +7,8 @@ import { Image } from "astro:assets";
 // @ts-ignore
 // import confetti from "canvas-confetti";
 
-import Counter from "@components/Counter.svelte";
+import Counter1 from "@components/Counter1.astro";
+import Counter2 from "@components/Counter2.svelte";
 import logo1 from "@images/astro-logo.png";
 import logo2 from "@images/astro-logo.svg";
 import Layout from "@layouts/Layout.astro";
@@ -26,7 +27,8 @@ import Layout from "@layouts/Layout.astro";
     <div class="mt-4">
       <button id="my-btn">Press Me</button>
     </div>
-    <Counter label="Tally" client:load />
+    <Counter1 label="Alpine" client:load />
+    <Counter2 label="Svelte" client:load />
   </main>
 </Layout>
 
