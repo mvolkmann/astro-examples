@@ -1,17 +1,23 @@
-<main>
-  <p>
-    The Web site you seek
-    <br />
-     cannot be located, but
-    <br />
-     countless more exist.
-  </p>
-  <p>
-    No content was found at
-    <br />
-    <span id="path"></span>
-  </p>
-</main>
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main>
+    <p>
+      The Web site you seek
+      <br />
+       cannot be located, but
+      <br />
+       countless more exist.
+    </p>
+    <p>
+      No content was found at
+      <br />
+      <span id="path"></span>
+    </p>
+  </main>
+</Layout>
 
 <script>
   const span = document.getElementById("path");
@@ -32,10 +38,6 @@
     background-color: linen;
     color: cornflowerblue;
     font-weight: bold;
-  }
-
-  hr {
-    width: 50%;
   }
 
   p {

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-// import { Icon } from "astro-icon";
+import { Icon } from "astro-icon";
 
 // This import doesn't work, but including it
 // with a script tag in Layout.astro does work.
@@ -30,7 +30,7 @@ import Layout from "@layouts/Layout.astro";
     </div>
     <Counter1 label="Alpine" start={3} />
     <Counter2 label="Svelte" start={3} client:load />
-    <!-- <Icon name="mdi:account" /> -->
+    <Icon name="mdi:account" />
   </main>
 </Layout>
 

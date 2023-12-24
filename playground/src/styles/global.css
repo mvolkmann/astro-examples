@@ -9,6 +9,10 @@ a:visited {
   color: purple;
 }
 
+body {
+  font-family: system-ui, sans-serif;
+}
+
 button {
   background-color: yellow;
   border: 1px solid gray;
@@ -20,7 +24,17 @@ button:hover {
   color: black;
 }
 
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 /* Tailwind removes styling of hr elements. */
 hr {
   border-bottom: 1px solid gray;
+}
+
+li {
+  list-style-type: disc;
+  margin-left: 1rem;
 }
