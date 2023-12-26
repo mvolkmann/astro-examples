@@ -9,8 +9,9 @@ const {team} = Astro.props;
 const {city, name, conference, logoUrl} = team.data;
 ---
 
-<div class="bg-yellow-100 border-4 border-orange-300 flex-col inline-flex items-center p-4 rounded-lg font-bold">
+<a class="bg-yellow-100 flex flex-col inline-flex items-center p-4 rounded-lg font-bold"
+href={`${name}`}>
   <div>The {city} {name} play in</div>
   <div>the {conference} conference.</div>
-  <img alt="team logo" src={logoUrl} width={100} />
-</div>
+  <img alt="team logo" src={logoUrl} width={100} transition:name={`${name}-logo`} />
+</a>

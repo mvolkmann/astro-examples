@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Team from '../components/Team.astro';
+import TeamSmall from '../components/TeamSmall.astro';
 import {getCollection, type CollectionEntry} from 'astro:content';
 
 const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
 ---
 
 <Layout>
-  {teams.map(team => <Team {team} />)}
+  <section class="bg-black gap-4 grid grid-cols-3 p-4">
+    {teams.map(team => <TeamSmall {team} />)}
+  </section>
 </Layout>
