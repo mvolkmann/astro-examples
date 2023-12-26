@@ -13,9 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { name } = Astro.params;
-console.log('[team].astro : name =', name);
 const team = teams.find((team) => team.data.name === name);
-console.log('[team].astro : team =', team);
 ---
 
 <Layout>
