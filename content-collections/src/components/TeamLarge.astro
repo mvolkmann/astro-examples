@@ -6,7 +6,7 @@ interface Props {
 }
 
 const {team} = Astro.props;
-const {city, name, conference, logoUrl} = team.data;
+const {city, conference, established, headCoach, logoUrl, name} = team.data;
 ---
 
 <div
@@ -19,6 +19,14 @@ const {city, name, conference, logoUrl} = team.data;
   
   <div class="text-4xl" transition:name={`${name}-conference`}>
     {conference}
+  </div>
+
+  <div class="text-xl">
+    Head Coach: {headCoach}
+  </div>
+
+  <div class="text-xs">
+    established in {established}
   </div>
 
   <img
