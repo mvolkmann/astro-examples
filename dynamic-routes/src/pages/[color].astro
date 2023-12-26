@@ -1,0 +1,16 @@
+---
+// This function is only required if SSR is not enabled.
+// Enter "npx astro add node" to enable SSR.
+/*
+export function getStaticPaths() {
+  const colors = ["red", "green", "blue"];
+  return colors.map((color) => ({ params: { color } }));
+}
+*/
+
+const { color } = Astro.params;
+---
+
+<h1>
+  You selected <span style={`color: ${color}`}>{color}</span>.
+</h1>

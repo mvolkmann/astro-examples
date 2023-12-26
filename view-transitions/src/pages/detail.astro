@@ -13,7 +13,7 @@ import Layout from "../layouts/Layout.astro";
     src="/sample.mp3"
     transition:name="my-audio"
     transition:persist></audio>
-  <video controls width="200" transition-name="my-video" transition:persist>
+  <video controls width="200" transition:name="my-video" transition:persist>
     <source src="/bunny-video.mp4" type="video/mp4" />
   </video>
 </Layout>

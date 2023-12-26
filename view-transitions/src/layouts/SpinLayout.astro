@@ -1,0 +1,87 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+
+const spinInAnimation = {
+  old: {
+    name: "spinOut",
+    duration: "1s",
+    easing: "linear",
+    fillMode: "forwards",
+  },
+  new: {
+    name: "spinIn",
+    duration: "1s",
+    easing: "linear",
+    fillMode: "backwards",
+  },
+};
+
+const spinOutAnimation = {
+  old: {
+    name: "spinIn",
+    duration: "1s",
+    easing: "linear",
+    fillMode: "forwards",
+  },
+  new: {
+    name: "spinOut",
+    duration: "1s",
+    easing: "linear",
+    fillMode: "backwards",
+  },
+};
+
+const spin = {
+  forwards: spinInAnimation,
+  backwards: spinOutAnimation,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <!-- This is required even when the transitions are customized. -->
+    <ViewTransitions />
+    <style>
+      html {
+        font-family: system-ui, sans-serif;
+      }
+      body {
+        transform-origin: center center;
+      }
+    </style>
+
+    <style is:global>
+      @keyframes spinOut {
+        from {
+          transform: rotate(0deg) scale(1);
+        }
+        to {
+          transform: rotate(360deg) scale(0);
+        }
+      }
+      @keyframes spinIn {
+        from {
+          transform: rotate(0deg) scale(0);
+        }
+        to {
+          transform: rotate(360deg), scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body class="p-4" transition:animate={spin}>
+    <slot />
+  </body>
+</html>
