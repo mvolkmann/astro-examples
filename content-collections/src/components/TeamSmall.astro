@@ -11,6 +11,7 @@ const {city, name, conference, logoUrl} = team.data;
 
 <a class="bg-yellow-100 flex flex-col inline-flex items-center p-4 rounded-lg font-bold"
 href={`${name}`}>
-  <div>{city} {name}</div>
+  <div transition:name={`${name}-name`}>{city} {name}</div>
+  <div class="text-[0]" transition:name={`${name}-conference`}>{conference}</div>
   <img alt="team logo" src={logoUrl} width={100} transition:name={`${name}-logo`} />
 </a>

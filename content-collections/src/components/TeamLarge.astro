@@ -10,7 +10,18 @@ const {city, name, conference, logoUrl} = team.data;
 ---
 
 <div class="bg-yellow-100 flex flex-col items-center p-4 h-screen w-full">
-  <div class="font-bold text-6xl">{city} {name}</div>
-  <div class="text-4xl">{conference} conference</div>
-  <img alt="team logo" src={logoUrl} width="90%" transition:name={`${name}-logo`} />
+  <div class="font-bold text-6xl" transition:name={`${name}-name`}>
+    {city} {name}
+  </div>
+  
+  <div class="text-4xl" transition:name={`${name}-conference`}>
+    {conference}
+  </div>
+
+  <img
+    alt="team logo"
+    src={logoUrl}
+    width="90%"
+    transition:name={`${name}-logo`}
+  />
 </a>
