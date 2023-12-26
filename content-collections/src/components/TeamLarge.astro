@@ -9,7 +9,10 @@ const {team} = Astro.props;
 const {city, name, conference, logoUrl} = team.data;
 ---
 
-<div class="bg-yellow-100 flex flex-col items-center p-4 h-screen w-full">
+<div
+  class="bg-yellow-100 flex flex-col items-center p-4 h-screen w-full"
+  @click="history.back()"
+>
   <div class="font-bold text-6xl" transition:name={`${name}-name`}>
     {city} {name}
   </div>
