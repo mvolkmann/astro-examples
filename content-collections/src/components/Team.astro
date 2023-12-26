@@ -1,0 +1,12 @@
+---
+import {type CollectionEntry} from 'astro:content';
+
+interface Props {
+  team: CollectionEntry<'nfl'>;
+}
+
+const {team} = Astro.props;
+const {city, name, conference} = team.data;
+---
+
+<p class="font-bold">The {city} {name} play in the {conference} conference.</p>

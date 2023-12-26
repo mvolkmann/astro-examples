@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Team from '../components/Team.astro';
+import {getCollection, type CollectionEntry} from 'astro:content';
+
+const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
+---
+
+<Layout>
+  {teams.map(team => <Team {team} />)}
+</Layout>
