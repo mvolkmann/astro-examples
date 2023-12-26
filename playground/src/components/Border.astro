@@ -1,0 +1,25 @@
+---
+interface Props {
+  color?: string;
+}
+
+const { color = "black" } = Astro.props;
+
+const style = {
+  borderColor: color,
+  boxShadow: `5px 5px 5px ${color}`,
+};
+---
+
+<div class="border" {style}>
+  <slot />
+</div>
+
+<style>
+  .border {
+    border-width: 3px;
+    border-radius: 1rem;
+    display: inline-block;
+    padding: 1rem;
+  }
+</style>

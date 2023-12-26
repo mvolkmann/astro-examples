@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon";
+// import { Icon } from "astro-icon";
 
 // This import doesn't work, but including it
 // with a script tag in Layout.astro does work.
@@ -8,6 +8,7 @@ import { Icon } from "astro-icon";
 // @ts-ignore
 // import confetti from "canvas-confetti";
 
+import Border from "@components/Border.astro";
 import Counter1 from "@components/Counter.astro";
 import Counter2 from "@components/Counter.svelte";
 import logo1 from "@images/astro-logo.png";
@@ -30,7 +31,14 @@ import Layout from "@layouts/Layout.astro";
     </div>
     <Counter1 label="Alpine" start={3} />
     <Counter2 label="Svelte" start={3} client:load />
-    <Icon name="mdi:account" />
+    <!-- <Icon name="mdi:account" /> -->
+    <Border color="red">
+      What is with this code?
+      <br />
+       Oh my, looks like I wrote it.
+      <br />
+       What was I thinking?
+    </Border>
   </main>
 </Layout>
 
