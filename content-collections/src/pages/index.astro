@@ -4,10 +4,33 @@ import TeamSmall from '../components/TeamSmall.astro';
 import {getCollection, type CollectionEntry} from 'astro:content';
 
 const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
+
+// Group the teams by conference.
+// The Object.groupBy function is not available in the Astro server.
+const byConference: {[conference: string]: CollectionEntry<'nfl'>[]} = {};
+for (const team of teams) {
+  const {conference} = team.data;
+  if (!byConference[conference]) {
+    byConference[conference] = [];
+  }
+  // @ts-ignore
+  byConference[conference].push(team);
+}
+
+const conferences = Object.keys(byConference).sort();
 ---
 
 <Layout>
-  <section class="bg-black gap-4 grid grid-cols-3 p-4">
-    {teams.map(team => <TeamSmall {team} />)}
+  <section class="bg-black p-4">
+    {conferences.map(conference => {
+      const label = <div class="my-2 text-white">{conference}</div>;
+      const teams = byConference[conference];
+      const teamBoxes = (
+        <div class="gap-4 grid grid-cols-4">
+          { teams?.map(team => <TeamSmall {team} />) }
+        </div>
+      );
+      return [label, teamBoxes];
+    })}
   </section>
 </Layout>
