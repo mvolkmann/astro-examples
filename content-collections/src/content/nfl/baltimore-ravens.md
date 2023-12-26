@@ -6,3 +6,5 @@ logoUrl: https://res.cloudinary.com/nflleague/image/private/f_auto/league/ucsdij
 headCoach: John Harbaugh
 established: 1996
 ---
+
+The Ravens passed their test with flying colors, turning over the 49ers’ seemingly unstoppable offense and cruising to an easy win. They get another test this week at home against the Dolphins. If they win that game, they will lock up the No. 1 seed before their season finale against the Steelers in Week 18.

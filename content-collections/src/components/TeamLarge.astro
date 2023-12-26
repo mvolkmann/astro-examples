@@ -7,6 +7,8 @@ interface Props {
 
 const {team} = Astro.props;
 const {city, conference, established, headCoach, logoUrl, name} = team.data;
+
+const { Content } = await team.render();
 ---
 
 <div
@@ -21,7 +23,7 @@ const {city, conference, established, headCoach, logoUrl, name} = team.data;
     {conference}
   </div>
 
-  <div class="text-xl">
+  <div class="text-lg">
     Head Coach: {headCoach}
   </div>
 
@@ -29,10 +31,14 @@ const {city, conference, established, headCoach, logoUrl, name} = team.data;
     established in {established}
   </div>
 
+  <div class="mt-4 w-[30rem]">
+    <Content />
+  </div>
+
   <img
     alt="team logo"
     src={logoUrl}
-    width="90%"
+    width="80%"
     transition:name={`${name}-logo`}
   />
 </a>
