@@ -5,7 +5,8 @@ const nfl = defineCollection({
   schema: z.object({
     city: z.string(),
     name: z.string(),
-    conference: z.string()
+    conference: z.string(),
+    logoUrl: z.string()
   })
 });
 

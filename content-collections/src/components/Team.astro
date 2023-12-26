@@ -6,7 +6,11 @@ interface Props {
 }
 
 const {team} = Astro.props;
-const {city, name, conference} = team.data;
+const {city, name, conference, logoUrl} = team.data;
 ---
 
-<p class="font-bold">The {city} {name} play in the {conference} conference.</p>
+<div class="bg-yellow-100 border-4 border-orange-300 flex-col inline-flex items-center p-4 rounded-lg font-bold">
+  <div>The {city} {name} play in</div>
+  <div>the {conference} conference.</div>
+  <img alt="team logo" src={logoUrl} width={100} />
+</div>
