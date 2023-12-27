@@ -15,11 +15,15 @@
 
   // @ts-ignore
   globalThis.initScore = (el: HTMLElement) => {
-    $score.subscribe((value) => {
+    $score.subscribe((score) => {
       // There is a timing issue with computed stores being updated!
       const status = $status.get();
-      console.log("RenderScore.astro subscribe: status =", status);
-      el.innerText = `${value} (${status})`;
+      el.innerText = `${score} (${status})`;
+    });
+    // Adding this second listener fixes the timing issue.
+    $status.subscribe((status) => {
+      const score = $score.get();
+      el.innerText = `${score} (${status})`;
     });
   };
 </script>
