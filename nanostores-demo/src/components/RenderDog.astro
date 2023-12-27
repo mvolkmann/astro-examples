@@ -1,26 +1,4 @@
-<div x-data x-init="initDog($el)">
-  <span class="name"></span> is a
-  <span class="breed"></span>.
-  <!-- <span x-text="getName"></span> -->
+<div x-init="subscribeToDog($data)" x-data="{name: 'Comet', breed: 'Whippet'}">
+  <span x-text="name"></span> is a
+  <span x-text="breed"></span>.
 </div>
-
-<script>
-  import {$dog} from '../stores.js';
-
-  // @ts-ignore
-  // globalThis.getName = () => $dog.get().name;
-
-  // @ts-ignore
-  globalThis.initDog = (el: HTMLElement) => {
-    // Both the subscribe and listen methods can be
-    // called on a store to register a listener.
-    // The subscribe method calls the listener function immediately.
-    // The listen method does not.
-    $dog.subscribe(dog => {
-      const name = el.querySelector('.name') as HTMLElement;
-      if (name) name.innerText = dog.name;
-      const breed = el.querySelector('.breed') as HTMLElement;
-      if (breed) breed.innerText = dog.breed;
-    });
-  };
-</script>

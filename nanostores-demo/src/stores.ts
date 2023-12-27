@@ -33,7 +33,15 @@ export function toggleDog() {
 // if @ts-ignore precedes all definitions of these functions.
 declare global {
   function subscribeToScore(data: ScoreData): void;
+  function subscribeToDog(data: Dog): void;
 }
+
+globalThis.subscribeToDog = (data: Dog) => {
+  $dog.subscribe(dog => {
+    data.name = dog.name;
+    data.breed = dog.breed;
+  });
+};
 
 globalThis.subscribeToScore = (data: ScoreData) => {
   $score.subscribe(score => data.score = score);
