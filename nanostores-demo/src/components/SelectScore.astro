@@ -12,10 +12,10 @@ const { initialValue } = Astro.props;
 </div>
 
 <script>
-  import { score } from "../stores.js";
+  import { $score } from "../stores.js";
 
   // @ts-ignore
-  globalThis.setScore = score.set;
+  globalThis.setScore = $score.set;
 </script>
 
 <style>

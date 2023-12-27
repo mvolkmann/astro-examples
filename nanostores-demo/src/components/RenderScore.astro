@@ -1,7 +1,7 @@
 <span x-data x-init="init($el)"></span>
 
 <script>
-  import { score } from "../stores.js";
+  import { $score } from "../stores.js";
 
   /*
   // This declaration can be omitted if @tsignore is used below.
@@ -12,6 +12,6 @@
 
   // @ts-ignore
   globalThis.init = (el: HTMLElement) => {
-    score.subscribe((value) => (el.innerText = String(value)));
+    $score.subscribe((value) => (el.innerText = String(value)));
   };
 </script>
