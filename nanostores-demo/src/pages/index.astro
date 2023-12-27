@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import RenderNumber from "../components/RenderNumber.astro";
+import SelectNumber from "../components/SelectNumber.astro";
+---
+
+<Layout>
+  <h1>nanostores Demo</h1>
+
+  <SelectNumber value={3} client:load />
+  <RenderNumber />
+</Layout>

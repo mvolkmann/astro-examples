@@ -1,0 +1,37 @@
+---
+interface Props {
+  value: number;
+}
+
+const { value } = Astro.props;
+---
+
+<div x-data={`{value: ${value}}`}>
+  <button @click="logClick()">Click Me 1</button>
+  <button @click="logClick2()">Click Me 2</button>
+  <input type="range" min="0" max="10" @input="updateScore" x-model="value" />
+  <span x-text="value"></span>
+</div>
+
+<script>
+  import { score } from "../stores.js";
+  console.log("SelectNumber.astro : score =", score);
+
+  // @ts-ignore
+  globalThis.logClick2 = () => {
+    alert("got click 2");
+  };
+
+  // @ts-ignore
+  globalThis.updateScore = (event) => {
+    const value = event.target.value;
+    console.log("SelectNumber.astro updateScore: value =", value);
+    score.set(value);
+  };
+</script>
+
+<style>
+  input[type="range"] {
+    width: 20rem;
+  }
+</style>

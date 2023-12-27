@@ -1,0 +1,9 @@
+<span id="score"></span>
+
+<script>
+  import { score } from "../stores.js";
+  score.subscribe((value) => {
+    const el = document.getElementById("score");
+    if (el) el.innerText = String(value);
+  });
+</script>
