@@ -4,7 +4,7 @@
 </div>
 
 <script>
-  import { $score } from "../stores.js";
+  import { $score, $status } from "../stores.js";
 
   /*
   // This declaration can be omitted if @tsignore is used below.
@@ -15,6 +15,11 @@
 
   // @ts-ignore
   globalThis.initScore = (el: HTMLElement) => {
-    $score.subscribe((value) => (el.innerText = String(value)));
+    $score.subscribe((value) => {
+      // There is a timing issue with computed stores being updated!
+      const status = $status.get();
+      console.log("RenderScore.astro subscribe: status =", status);
+      el.innerText = `${value} (${status})`;
+    });
   };
 </script>

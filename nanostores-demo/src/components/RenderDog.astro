@@ -12,6 +12,10 @@
 
   // @ts-ignore
   globalThis.initDog = (el: HTMLElement) => {
+    // Both the subscribe and listen methods can be
+    // called on a store to register a listener.
+    // The subscribe method calls the listener function immediately.
+    // The listen method does not.
     $dog.subscribe((dog) => {
       const name = el.querySelector(".name") as HTMLElement;
       if (name) name.innerText = dog.name;
