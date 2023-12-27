@@ -24,9 +24,7 @@ const { value } = Astro.props;
 
   // @ts-ignore
   globalThis.updateScore = (event) => {
-    const value = event.target.value;
-    console.log("SelectNumber.astro updateScore: value =", value);
-    score.set(value);
+    score.set(event.target.value);
   };
 </script>
 
