@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RenderDog from '../components/RenderDog.astro';
+import RenderScore from '../components/RenderScore.astro';
 import SelectScore from '../components/SelectScore.astro';
 ---
 
@@ -9,9 +10,8 @@ import SelectScore from '../components/SelectScore.astro';
 
   <main x-data>
     <SelectScore initialValue={3} />
-    <div x-init="subscribeToScore($data)">
-      The score is <span x-text="score"></span>.
-    </div>
+    <RenderScore />
+
     <RenderDog />
     <button @click="toggleDog">Toggle Dog</button>
   </main>
