@@ -9,11 +9,12 @@ import ToggleDog from '../components/ToggleDog.astro';
 <Layout>
   <h1>nanostores Demo</h1>
 
-  <RenderScore />
-  <SelectScore initialValue={3} />
-  <RenderScore />
-  <RenderDog />
-  <ToggleDog />
+  <main x-data>
+    <SelectScore initialValue={3} />
+    <RenderScore />
+    <RenderDog />
+    <ToggleDog />
+  </main>
 
   <!-- TODO: Try doing the same things with Svelte and React components. -->
 </Layout>
