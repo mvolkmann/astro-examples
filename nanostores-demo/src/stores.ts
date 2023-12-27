@@ -1,5 +1,5 @@
+// This is using the vanilla JS version of nanostores.
 import { atom, computed, map } from "nanostores";
-import { getParsedCommandLineOfConfigFile } from "typescript";
 
 export const $score = atom<number>(0);
 
