@@ -1,20 +1,3 @@
-<script>
-  import {$score} from '../stores.js';
-
-  type ScoreData = {score: number};
-
-  // This declaration can be omitted if @tsignore is used below.
-  declare global {
-    function initScore(data: ScoreData): void;
-  }
-
-  // ts-ignore
-  globalThis.initScore = (data: ScoreData) => {
-    $score.subscribe(score => data.score = score);
-  };
-</script>
-
-<div x-init="initScore($data)" x-data="{score: 0}">
-  The score is
-  <span x-text="score"></span>.
+<div x-init="subscribeToScore($data)" x-data="{score: 0}">
+  The score is <span x-text="score"></span>.
 </div>

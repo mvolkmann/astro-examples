@@ -2,6 +2,8 @@
 import {atom, computed, map} from 'nanostores';
 
 export const $score = atom<number>(0);
+export type ScoreData = {score: number};
+
 
 export const $status = computed($score, (score: number) =>
   score === 10 ? 'win' : 'play'
@@ -26,3 +28,13 @@ export function toggleDog() {
   $dog.setKey('name', name === 'Comet' ? 'Oscar' : 'Comet');
   $dog.setKey('breed', name === 'Comet' ? 'GSP' : 'Whippet');
 }
+
+// This declaration can be omitted
+// if @ts-ignore precedes all definitions of these functions.
+declare global {
+  function subscribeToScore(data: ScoreData): void;
+}
+
+globalThis.subscribeToScore = (data: ScoreData) => {
+  $score.subscribe(score => data.score = score);
+};
