@@ -5,7 +5,7 @@
 </div>
 
 <script>
-  import { $dog } from "../stores.js";
+  import {$dog} from '../stores.js';
 
   // @ts-ignore
   // globalThis.getName = () => $dog.get().name;
@@ -16,10 +16,10 @@
     // called on a store to register a listener.
     // The subscribe method calls the listener function immediately.
     // The listen method does not.
-    $dog.subscribe((dog) => {
-      const name = el.querySelector(".name") as HTMLElement;
+    $dog.subscribe(dog => {
+      const name = el.querySelector('.name') as HTMLElement;
       if (name) name.innerText = dog.name;
-      const breed = el.querySelector(".breed") as HTMLElement;
+      const breed = el.querySelector('.breed') as HTMLElement;
       if (breed) breed.innerText = dog.breed;
     });
   };

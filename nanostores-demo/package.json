@@ -3,11 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "astro": "astro",
     "build": "astro check && astro build",
+    "dev": "astro dev",
+    "format": "prettier --write '{public,src}/**/*.{astro,css,html,js,ts}'",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.3.1",
@@ -17,5 +18,8 @@
     "astro": "^4.0.7",
     "nanostores": "^0.9.5",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "prettier-plugin-astro": "^0.12.3"
   }
 }
