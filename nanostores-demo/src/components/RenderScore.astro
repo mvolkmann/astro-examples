@@ -3,11 +3,14 @@
 <script>
   import { score } from "../stores.js";
 
+  /*
   // This declaration can be omitted if @tsignore is used below.
   declare global {
     function init(el: HTMLElement): void;
   }
+  */
 
+  // @ts-ignore
   globalThis.init = (el: HTMLElement) => {
     score.subscribe((value) => (el.innerText = String(value)));
   };
