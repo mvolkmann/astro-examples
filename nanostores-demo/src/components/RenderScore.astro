@@ -1,0 +1,30 @@
+<span x-data x-init="init($el)"></span>
+
+<script>
+  import { score } from "../stores.js";
+
+  let span: HTMLElement | null;
+
+  /*
+  globalThis.save = (el: HTMLElement) => {
+    console.log("RenderNumber.astro save: el =", el);
+    span = el;
+    update(score.get());
+  };
+  */
+  function init(el: HTMLElement) {
+    console.log("RenderNumber.astro init: el =", el);
+    span = el;
+    update(score.get());
+  }
+  // @ts-ignore
+  globalThis.init = init;
+
+  function update(value: number) {
+    console.log("RenderScore.astro update: value =", value);
+    if (span) span.innerText = String(value);
+  }
+
+  score.subscribe(update);
+  score.subscribe((value) => console.log("RenderNumber.astro score =", value));
+</script>
