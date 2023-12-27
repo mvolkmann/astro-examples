@@ -43,6 +43,7 @@ globalThis.toggleDog = () => {
   // The get method retrieves the entire object.
   // There is no getKey method.
   const {name} = $dog.get();
+
   // The set method changes the entire object.
   // The setKey method changes a single property.
   $dog.setKey('name', name === 'Comet' ? 'Oscar' : 'Comet');
