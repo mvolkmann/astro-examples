@@ -2,8 +2,7 @@
 import {atom, computed, map} from 'nanostores';
 
 export const $score = atom<number>(0);
-export type ScoreData = {score: number};
-
+export type ScoreData = {score: number, status: string};
 
 export const $status = computed($score, (score: number) =>
   score === 10 ? 'win' : 'play'
@@ -36,6 +35,7 @@ globalThis.subscribeToDog = (data: Dog) => {
 
 globalThis.subscribeToScore = (data: ScoreData) => {
   $score.subscribe(score => data.score = score);
+  $status.subscribe(status => data.status = status);
 };
 
 globalThis.toggleDog = () => {
