@@ -19,21 +19,12 @@ export const $dog = map<Dog>({
   breed: 'Whippet'
 });
 
-export function toggleDog() {
-  // The get method retrieves the entire object.
-  // There is no getKey method.
-  const {name} = $dog.get();
-  // The set method changes the entire object.
-  // The setKey method changes a single property.
-  $dog.setKey('name', name === 'Comet' ? 'Oscar' : 'Comet');
-  $dog.setKey('breed', name === 'Comet' ? 'GSP' : 'Whippet');
-}
-
 // This declaration can be omitted
 // if @ts-ignore precedes all definitions of these functions.
 declare global {
   function subscribeToScore(data: ScoreData): void;
   function subscribeToDog(data: Dog): void;
+  function toggleDog(): void;
 }
 
 globalThis.subscribeToDog = (data: Dog) => {
@@ -46,3 +37,13 @@ globalThis.subscribeToDog = (data: Dog) => {
 globalThis.subscribeToScore = (data: ScoreData) => {
   $score.subscribe(score => data.score = score);
 };
+
+globalThis.toggleDog = () => {
+  // The get method retrieves the entire object.
+  // There is no getKey method.
+  const {name} = $dog.get();
+  // The set method changes the entire object.
+  // The setKey method changes a single property.
+  $dog.setKey('name', name === 'Comet' ? 'Oscar' : 'Comet');
+  $dog.setKey('breed', name === 'Comet' ? 'GSP' : 'Whippet');
+}
