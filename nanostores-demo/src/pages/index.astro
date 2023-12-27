@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import RenderScore from "../components/RenderScore.astro";
-import SelectNumber from "../components/SelectNumber.astro";
+import SelectScore from "../components/SelectScore.astro";
 ---
 
 <Layout>
   <h1>nanostores Demo</h1>
 
   <RenderScore />
-  <SelectNumber value={3} client:load />
+  <SelectScore initialValue={3} client:load />
   <RenderScore />
 </Layout>

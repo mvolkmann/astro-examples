@@ -3,28 +3,12 @@
 <script>
   import { score } from "../stores.js";
 
-  let span: HTMLElement | null;
+  // This declaration can be omitted if @tsignore is used below.
+  declare global {
+    function init(el: HTMLElement): void;
+  }
 
-  /*
-  globalThis.save = (el: HTMLElement) => {
-    console.log("RenderNumber.astro save: el =", el);
-    span = el;
-    update(score.get());
+  globalThis.init = (el: HTMLElement) => {
+    score.subscribe((value) => (el.innerText = String(value)));
   };
-  */
-  function init(el: HTMLElement) {
-    console.log("RenderNumber.astro init: el =", el);
-    span = el;
-    update(score.get());
-  }
-  // @ts-ignore
-  globalThis.init = init;
-
-  function update(value: number) {
-    console.log("RenderScore.astro update: value =", value);
-    if (span) span.innerText = String(value);
-  }
-
-  score.subscribe(update);
-  score.subscribe((value) => console.log("RenderNumber.astro score =", value));
 </script>

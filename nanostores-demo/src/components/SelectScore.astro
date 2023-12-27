@@ -1,12 +1,12 @@
 ---
 interface Props {
-  value: number;
+  initialValue: number;
 }
 
-const { value } = Astro.props;
+const { initialValue } = Astro.props;
 ---
 
-<div x-data={`{value: ${value}}`} x-effect="updateScore(value)">
+<div x-data={`{value: ${initialValue}}`} x-effect="updateScore(value)">
   <input type="range" min="0" max="10" x-model="value" />
   <span x-text="value"></span>
 </div>
