@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import RenderDog from "../components/RenderDog.astro";
 import RenderScore from "../components/RenderScore.astro";
 import SelectScore from "../components/SelectScore.astro";
+import ToggleDog from "../components/ToggleDog.astro";
 ---
 
 <Layout>
@@ -12,4 +13,5 @@ import SelectScore from "../components/SelectScore.astro";
   <SelectScore initialValue={3} client:load />
   <RenderScore />
   <RenderDog />
+  <ToggleDog />
 </Layout>

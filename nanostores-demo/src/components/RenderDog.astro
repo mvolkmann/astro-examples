@@ -1,10 +1,14 @@
 <div x-data x-init="initDog($el)">
-  <span class="name"></span>
-  <span class="breed"></span>
+  <span class="name"></span> is a
+  <span class="breed"></span>.
+  <!-- <span x-text="getName"></span> -->
 </div>
 
 <script>
   import { $dog } from "../stores.js";
+
+  // @ts-ignore
+  // globalThis.getName = () => $dog.get().name;
 
   // @ts-ignore
   globalThis.initDog = (el: HTMLElement) => {
