@@ -19,33 +19,26 @@ const $dog = map<Dog>({
   breed: 'Whippet'
 });
 
-// This declaration can be omitted if @ts-ignore
-// precedes the definitions of each of these functions.
-declare global {
-  function subscribeToScore(data: ScoreData): void;
-  function subscribeToDog(data: Dog): void;
-  function toggleDog(): void;
-}
+// @ts-ignore
+globalThis.ns = {
+  subscribeToDog(data: Dog) {
+    $dog.subscribe(dog => {
+      data.name = dog.name;
+      data.breed = dog.breed;
+    });
+  },
+  subscribeToScore(data: ScoreData) {
+    $score.subscribe(score => data.score = score);
+    $status.subscribe(status => data.status = status);
+  },
+  toggleDog() {
+    // The get method retrieves the entire object.
+    // There is no getKey method.
+    const {name} = $dog.get();
 
-globalThis.subscribeToDog = (data: Dog) => {
-  $dog.subscribe(dog => {
-    data.name = dog.name;
-    data.breed = dog.breed;
-  });
+    // The set method changes the entire object.
+    // The setKey method changes a single property.
+    $dog.setKey('name', name === 'Comet' ? 'Oscar' : 'Comet');
+    $dog.setKey('breed', name === 'Comet' ? 'GSP' : 'Whippet');
+  }
 };
-
-globalThis.subscribeToScore = (data: ScoreData) => {
-  $score.subscribe(score => data.score = score);
-  $status.subscribe(status => data.status = status);
-};
-
-globalThis.toggleDog = () => {
-  // The get method retrieves the entire object.
-  // There is no getKey method.
-  const {name} = $dog.get();
-
-  // The set method changes the entire object.
-  // The setKey method changes a single property.
-  $dog.setKey('name', name === 'Comet' ? 'Oscar' : 'Comet');
-  $dog.setKey('breed', name === 'Comet' ? 'GSP' : 'Whippet');
-}
