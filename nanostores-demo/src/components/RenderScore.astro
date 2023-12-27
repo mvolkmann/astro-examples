@@ -1,8 +1,3 @@
-<div x-init="initScore($data)" x-data="{score: 2}">
-  The score is
-  <span x-text="score"></span>.
-</div>
-
 <script>
   import {$score} from '../stores.js';
 
@@ -18,3 +13,8 @@
     $score.subscribe(score => data.score = score);
   };
 </script>
+
+<div x-init="initScore($data)" x-data="{score: 0}">
+  The score is
+  <span x-text="score"></span>.
+</div>
