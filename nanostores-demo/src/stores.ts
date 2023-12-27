@@ -1,25 +1,26 @@
 // This is using the vanilla JS version of nanostores.
 import {atom, computed, map} from 'nanostores';
 
-export const $score = atom<number>(0);
-export type ScoreData = {score: number, status: string};
-
-export const $status = computed($score, (score: number) =>
-  score === 10 ? 'win' : 'play'
-);
-
 type Dog = {
   name: string;
   breed: string;
 };
 
-export const $dog = map<Dog>({
+type ScoreData = {score: number, status: string};
+
+export const $score = atom<number>(0);
+
+export const $status = computed($score, (score: number) =>
+  score === 10 ? 'win' : 'play'
+);
+
+const $dog = map<Dog>({
   name: 'Comet',
   breed: 'Whippet'
 });
 
-// This declaration can be omitted
-// if @ts-ignore precedes all definitions of these functions.
+// This declaration can be omitted if @ts-ignore
+// precedes the definitions of each of these functions.
 declare global {
   function subscribeToScore(data: ScoreData): void;
   function subscribeToDog(data: Dog): void;
