@@ -1,0 +1,18 @@
+<div x-data x-init="initDog($el)">
+  <span class="name"></span>
+  <span class="breed"></span>
+</div>
+
+<script>
+  import { $dog } from "../stores.js";
+
+  // @ts-ignore
+  globalThis.initDog = (el: HTMLElement) => {
+    $dog.subscribe((dog) => {
+      const name = el.querySelector(".name") as HTMLElement;
+      if (name) name.innerText = dog.name;
+      const breed = el.querySelector(".breed") as HTMLElement;
+      if (breed) breed.innerText = dog.breed;
+    });
+  };
+</script>
