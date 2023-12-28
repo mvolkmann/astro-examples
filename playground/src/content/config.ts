@@ -4,12 +4,13 @@ import {defineCollection, z} from 'astro:content';
 const string = z.string();
 const dogs = defineCollection({
   type: 'content',
-  schema: z.object({
-    breed: string,
-    name: string,
-    image: string,
-    website: string
-  })
+  schema: ({image}) =>
+    z.object({
+      breed: string,
+      name: string,
+      photo: image(), // enables using Image component for optimized images
+      website: string
+    })
 });
 
 export const collections = {dogs};

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import {getEntry} from 'astro:content';
 import {slide} from 'astro:transitions';
 // import Layout from "../../../layouts/Layout.astro";
@@ -12,9 +13,9 @@ if (!name) throw new Error('Missing name parameter');
 const entry = await getEntry('dogs', name.toLowerCase());
 let Content;
 let breed = '';
-let image = '';
+let photo;
 if (entry) {
-  ({breed, image} = entry.data);
+  ({breed, photo} = entry.data);
   ({Content} = await entry?.render());
 }
 ---
@@ -23,7 +24,14 @@ if (entry) {
   <main class="dog my-4">
     <p class="font-bold mb-4">{name} is a {breed}.</p>
     <div class="img-container">
-      <img alt="breed photo" src={image} transition:name={name + '-img'} />
+      {photo && (
+        <Image
+          alt="breed photo"
+          src={photo}
+          transition:name={name + '-img'}
+          width={600}
+        />
+      )}
     </div>
     {Content && <Content />}
   </main>
