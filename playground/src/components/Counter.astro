@@ -10,22 +10,12 @@ const { label = "", start = 0 } = Astro.props;
 <div class="row" x-data={`{ count: ${start} }`}>
   {label && <div>{label}</div>}
   <button :disabled="count <= 0" @click="count--">-</button>
-  <h1 x-text="count"></h1>
+  <div x-text="count"></div>
   <button @click="count++">+</button>
-  <div>
-    <button @click="demo">Try</button>
-  </div>
 </div>
 
-<script is:inline>
-  function demo() {
-    alert("Demo time!");
-  }
-</script>
-
 <style>
-  button,
-  h1 {
+  button {
     margin: 0;
   }
 

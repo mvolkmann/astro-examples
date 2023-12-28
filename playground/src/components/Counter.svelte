@@ -10,7 +10,7 @@
     <div>{label}</div>
   {/if}
   <button disabled={count <= 0} on:click={() => count--}>-</button>
-  <h1>{count}</h1>
+  <div>{count}</div>
   <button on:click={() => count++}>+</button>
 </div>
 

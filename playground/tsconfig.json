@@ -1,11 +1,19 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "/Users/volkmannm/Documents/dev/astro/astro-examples/playground/src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@images/*": ["images/*"],
-      "@layouts/*": ["layouts/*"]
-    }
+      "@components/*": [
+        "components/*"
+      ],
+      "@images/*": [
+        "images/*"
+      ],
+      "@layouts/*": [
+        "layouts/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
