@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro';
 const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
 
 export async function getStaticPaths() {
+    // Cannot use the outer teams variable here.
     const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
     return teams.map((team) => (
         { params: { name: team.data.name } }
