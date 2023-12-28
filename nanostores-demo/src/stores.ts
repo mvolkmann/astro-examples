@@ -28,7 +28,6 @@ globalThis.ns = {
     count.set(value);
   },
   subscribeToCount(data: CountData) {
-    console.log('stores.ts subscribeToCount: entered');
     count.subscribe(value => (data.count = value));
   },
   subscribeToDog(data: Dog) {

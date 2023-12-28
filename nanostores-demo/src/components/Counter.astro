@@ -10,7 +10,7 @@ const {label = ''} = Astro.props;
   class="row"
   x-data
   x-init="ns.subscribeToCount($data)"
-  x-effect="ns.setCount(Number(count))"
+  x-effect="ns.setCount(count)"
 >
   {label && <div>{label}</div>}
   <button :disabled="count <= 0" @click="count--">-</button>
