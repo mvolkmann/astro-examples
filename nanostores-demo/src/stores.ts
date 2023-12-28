@@ -30,7 +30,7 @@ const $dog = map<Dog>({
 globalThis.ns = {
   setupCount(data: CountData) {
     count.subscribe(value => (data.count = value));
-    data.setCount = (value: number) => count.set(value);
+    data.setCount = count.set;
   },
   subscribeToDog(data: Dog) {
     $dog.subscribe(dog => {
