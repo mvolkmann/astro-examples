@@ -8,10 +8,6 @@ interface Props {
 const Counter: FC<Props> = ({ label, start }) => {
   const [count, setCount] = useState(start);
 
-  const add = (factor = 1) => {
-    setCount(count + factor);
-  };
-
   return (
     <div>
       {label && <div>{label}</div>}
