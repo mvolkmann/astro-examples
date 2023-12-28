@@ -6,17 +6,26 @@ interface Props {
 const {label = ''} = Astro.props;
 ---
 
+<!-- The x-data attribute is not needed here
+     if it is present on an ancestor element. -->
 <div
   class="row"
   x-data
-  x-init="ns.subscribeToCount($data)"
-  x-effect="ns.setCount(count)"
+  x-init="ns.setupCount($data)"
+  x-effect="setCount(count)"
 >
   {label && <div>{label}</div>}
   <button :disabled="count <= 0" @click="count--">-</button>
   <div x-text="count"></div>
   <button @click="count++">+</button>
 </div>
+
+<!-- is:inline seems to be required for Alpine to see functions. -->
+<!-- type="module" is require to use import. -->
+<!-- <script is:inline type="module">
+  import {subscribeToCount} from '../stores.ts';
+  console.log('Counter.astro : subscribeToCount =', subscribeToCount);
+</script> -->
 
 <style>
   .row {

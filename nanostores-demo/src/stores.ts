@@ -1,14 +1,18 @@
 // This is using the vanilla JS version of nanostores.
 import {atom, computed, map} from 'nanostores';
 
-export const count = atom<number>(4);
+export const count = atom<number>(1);
 
 type Dog = {
   name: string;
   breed: string;
 };
 
-type CountData = {count: number};
+type CountData = {
+  count: number;
+  setCount: (value: number) => void;
+};
+
 type ScoreData = {score: number; status: string};
 
 export const $score = atom<number>(0);
@@ -24,11 +28,9 @@ const $dog = map<Dog>({
 
 // @ts-ignore
 globalThis.ns = {
-  setCount(value: number) {
-    count.set(value);
-  },
-  subscribeToCount(data: CountData) {
+  setupCount(data: CountData) {
     count.subscribe(value => (data.count = value));
+    data.setCount = (value: number) => count.set(value);
   },
   subscribeToDog(data: Dog) {
     $dog.subscribe(dog => {
