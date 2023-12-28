@@ -8,12 +8,12 @@ import SelectScore from '../components/SelectScore.astro';
 <Layout>
   <h1>nanostores Demo</h1>
 
-  <main x-data>
+  <main x-data="{dog: {name: 'Comet', breed: 'Whippet'}, score: 3}" x-init="ns.setData($data)">
     <SelectScore initialValue={3} />
     <RenderScore />
 
     <RenderDog />
-    <button @click="ns.toggleDog">Toggle Dog</button>
+    <button @click="ns.toggleDog()">Toggle Dog</button>
   </main>
 
   <!-- TODO: Try doing the same things with Svelte and React components. -->

@@ -6,18 +6,14 @@ interface Props {
 const {initialValue} = Astro.props;
 ---
 
-<div x-data={`{value: ${initialValue}}`} x-effect="setScore(Number(value))">
+<div x-data={`{value: ${initialValue}}`} x-effect="ns.setScore(Number(value))">
   <input type="range" min="0" max="10" x-model="value" />
   <span x-text="value"></span>
 </div>
 
 <script>
-  import {$score} from '../stores.js';
-
-  // @ts-ignore
-  globalThis.setScore = $score.set;
+  import '../stores.ts';
 </script>
-
 <style>
   input[type='range'] {
     width: 20rem;
