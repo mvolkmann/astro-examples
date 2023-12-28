@@ -1,17 +1,16 @@
 <script>
-  export let label = '';
-  export let start = 0;
+  import {count} from '../stores.ts';
 
-  let count = start;
+  export let label = '';
 </script>
 
 <div class="row">
   {#if label}
     <div>{label}</div>
   {/if}
-  <button disabled={count <= 0} on:click={() => count--}>-</button>
-  <div>{count}</div>
-  <button on:click={() => count++}>+</button>
+  <button disabled={$count <= 0} on:click={() => count.set($count - 1)}>-</button>
+  <div>{$count}</div>
+  <button on:click={() => count.set($count + 1)}>+</button>
 </div>
 
 <style>

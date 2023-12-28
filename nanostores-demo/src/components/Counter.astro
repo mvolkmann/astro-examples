@@ -1,18 +1,29 @@
 ---
 interface Props {
   label?: string;
-  start?: number;
 }
 
-const {label = '', start = 0} = Astro.props;
+const {label = ''} = Astro.props;
 ---
 
-<div class="row" x-data={`{ count: ${start} }`}>
+<div
+  class="row"
+  x-data="{ count: 0 }"
+  x-effect="setCount(Number(count))"
+  x-init="ns.subscribeToScore($data)"
+>
   {label && <div>{label}</div>}
-  <button :disabled="count <= 0" @click="count--">-</button>
+  <button :disabled="count <= 0" @click="setCount(count - 1)">-</button>
   <div x-text="count"></div>
-  <button @click="count++">+</button>
+  <button @click="setCount(count + 1)">+</button>
 </div>
+
+<script>
+  import {count} from '../stores.ts';
+
+  // @ts-ignore
+  globalThis.setCount = count.set;
+</script>
 
 <style>
   .row {

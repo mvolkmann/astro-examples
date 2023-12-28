@@ -1,12 +1,15 @@
 // This is using the vanilla JS version of nanostores.
 import {atom, computed, map} from 'nanostores';
 
+export const count = atom<number>(4);
+
 type Dog = {
   name: string;
   breed: string;
 };
 
-type ScoreData = {score: number, status: string};
+type CountData = {count: number};
+type ScoreData = {score: number; status: string};
 
 export const $score = atom<number>(0);
 
@@ -21,6 +24,10 @@ const $dog = map<Dog>({
 
 // @ts-ignore
 globalThis.ns = {
+  subscribeToCount(data: CountData) {
+    console.log('stores.ts subscribeToCount: entered');
+    count.subscribe(value => (data.count = value));
+  },
   subscribeToDog(data: Dog) {
     $dog.subscribe(dog => {
       data.name = dog.name;
@@ -28,8 +35,8 @@ globalThis.ns = {
     });
   },
   subscribeToScore(data: ScoreData) {
-    $score.subscribe(score => data.score = score);
-    $status.subscribe(status => data.status = status);
+    $score.subscribe(score => (data.score = score));
+    $status.subscribe(status => (data.status = status));
   },
   toggleDog() {
     // The get method retrieves the entire object.

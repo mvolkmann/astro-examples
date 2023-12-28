@@ -1,21 +1,21 @@
-import {type FC, useState} from 'react';
+import {type FC} from 'react';
+import {useStore} from '@nanostores/react';
+import {count} from '../stores.ts';
 
 interface Props {
   label?: string;
-  start?: number;
 }
 
-const Counter: FC<Props> = ({label = '', start = 0}) => {
-  const [count, setCount] = useState(start);
-
+const Counter: FC<Props> = ({label = ''}) => {
+  const $count = useStore(count);
   return (
     <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
       {label && <div>{label}</div>}
-      <button disabled={count <= 0} onClick={() => setCount(c => c - 1)}>
+      <button disabled={$count <= 0} onClick={() => count.set($count - 1)}>
         -
       </button>
-      <div>{count}</div>
-      <button onClick={() => setCount(c => c + 1)}>+</button>
+      <div>{$count}</div>
+      <button onClick={() => count.set($count + 1)}>+</button>
     </div>
   );
 };
