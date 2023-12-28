@@ -7,15 +7,15 @@ interface Props {
 }
 
 const Counter: FC<Props> = ({label = ''}) => {
-  const $count = useStore(count);
+  const value = useStore(count);
   return (
     <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
       {label && <div>{label}</div>}
-      <button disabled={$count <= 0} onClick={() => count.set($count - 1)}>
+      <button disabled={value <= 0} onClick={() => count.set(value - 1)}>
         -
       </button>
-      <div>{$count}</div>
-      <button onClick={() => count.set($count + 1)}>+</button>
+      <div>{value}</div>
+      <button onClick={() => count.set(value + 1)}>+</button>
     </div>
   );
 };
