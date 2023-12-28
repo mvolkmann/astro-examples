@@ -1,6 +1,6 @@
 ---
 import {Image} from 'astro:assets';
-// import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 // This import doesn't work, but including it
 // with a script tag in Layout.astro does work.
@@ -15,6 +15,15 @@ import Counter3 from '@components/Counter.tsx';
 import logo1 from '@images/astro-logo.png';
 import logo2 from '@images/astro-logo.svg';
 import Layout from '@layouts/Layout.astro';
+
+const icons = [
+  "mdi:account",
+  "tdesign:angry",
+  "material-symbols:ar-on-you-outline",
+  "solar:bicycling-round-bold",
+  "fa6-solid:hat-wizard",
+  "heart"
+];
 
 // import dogs from "../data/dogs.json";
 /* global confetti */
@@ -33,7 +42,13 @@ import Layout from '@layouts/Layout.astro';
     <Counter1 label="Alpine" start={3} />
     <Counter2 label="Svelte" start={3} client:load />
     <Counter3 label="React" start={3} client:load />
-    <!-- <Icon name="mdi:account" /> -->
+
+    <div class="row">
+      {icons.map(icon => (
+        <Icon name={icon} size={60} title={icon} />
+      ))}
+    </div>
+
     <Border color="red">
       What is with this code?
       <br />
@@ -68,5 +83,13 @@ import Layout from '@layouts/Layout.astro';
   h1 {
     color: purple;
     font-size: 3rem;
+  }
+
+  .row {
+    display: flex;
+    gap: 1rem;
+    & svg {
+      color: red;
+    }
   }
 </style>
