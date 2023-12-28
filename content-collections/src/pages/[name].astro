@@ -5,6 +5,9 @@ import Layout from '../layouts/Layout.astro';
 
 const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
 
+// This function is not used when "output" is set to "server"
+// in astro.config.mjs.
+/*
 export async function getStaticPaths() {
     // Cannot use the outer teams variable here.
     const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
@@ -12,9 +15,11 @@ export async function getStaticPaths() {
         { params: { name: team.data.name } }
     ));
 }
+*/
 
 const { name } = Astro.params;
 const team = teams.find((team) => team.data.name === name);
+if (!team) return new Response('', { status: 404 });
 ---
 
 <Layout>
