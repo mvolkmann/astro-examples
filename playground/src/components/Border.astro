@@ -3,11 +3,11 @@ interface Props {
   color?: string;
 }
 
-const { color = "black" } = Astro.props;
+const {color = 'black'} = Astro.props;
 
 const style = {
   borderColor: color,
-  boxShadow: `5px 5px 5px ${color}`,
+  boxShadow: `5px 5px 5px ${color}`
 };
 ---
 

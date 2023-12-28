@@ -1,29 +1,29 @@
 ---
-import { getEntry } from "astro:content";
-import { slide } from "astro:transitions";
+import {getEntry} from 'astro:content';
+import {slide} from 'astro:transitions';
 // import Layout from "../../../layouts/Layout.astro";
-import Layout from "@layouts/Layout.astro";
+import Layout from '@layouts/Layout.astro';
 
-const { name } = Astro.params;
-if (!name) throw new Error("Missing name parameter");
+const {name} = Astro.params;
+if (!name) throw new Error('Missing name parameter');
 
 // The second argument of getEntry must be lowercase
 // even if the Markdown filename uses uppercase.
-const entry = await getEntry("dogs", name.toLowerCase());
+const entry = await getEntry('dogs', name.toLowerCase());
 let Content;
-let breed = "";
-let image = "";
+let breed = '';
+let image = '';
 if (entry) {
-  ({ breed, image } = entry.data);
-  ({ Content } = await entry?.render());
+  ({breed, image} = entry.data);
+  ({Content} = await entry?.render());
 }
 ---
 
-<Layout title={name} transition:animate={slide({ duration: "2s" })}>
+<Layout title={name} transition:animate={slide({duration: '2s'})}>
   <main class="dog my-4">
     <p class="font-bold mb-4">{name} is a {breed}.</p>
     <div class="img-container">
-      <img alt="breed photo" src={image} transition:name={name + "-img"} />
+      <img alt="breed photo" src={image} transition:name={name + '-img'} />
     </div>
     {Content && <Content />}
   </main>

@@ -1,20 +1,20 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type {CollectionEntry} from 'astro:content';
 
 type Props = {
-  dog: CollectionEntry<"dogs">;
+  dog: CollectionEntry<'dogs'>;
 };
 
-const { dog } = Astro.props;
-const { breed, image, name } = dog.data;
+const {dog} = Astro.props;
+const {breed, image, name} = dog.data;
 // const { Content } = await dog.render();
 ---
 
 <div class="dog my-4">
   <hr class="mb-4" />
   <p class="font-bold mb-4">{name}, the {breed}</p>
-  <img alt="breed photo" src={image} transition:name={name + "-img"} />
-  <a href={"/pets/dog/" + name}>Detail</a>
+  <img alt="breed photo" src={image} transition:name={name + '-img'} />
+  <a href={'/pets/dog/' + name}>Detail</a>
   <!-- <Content /> -->
 </div>
 

@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import {Image} from 'astro:assets';
 // import { Icon } from "astro-icon";
 
 // This import doesn't work, but including it
@@ -8,13 +8,13 @@ import { Image } from "astro:assets";
 // @ts-ignore
 // import confetti from "canvas-confetti";
 
-import Border from "@components/Border.astro";
-import Counter1 from "@components/Counter.astro";
-import Counter2 from "@components/Counter.svelte";
-import Counter3 from "@components/Counter.tsx";
-import logo1 from "@images/astro-logo.png";
-import logo2 from "@images/astro-logo.svg";
-import Layout from "@layouts/Layout.astro";
+import Border from '@components/Border.astro';
+import Counter1 from '@components/Counter.astro';
+import Counter2 from '@components/Counter.svelte';
+import Counter3 from '@components/Counter.tsx';
+import logo1 from '@images/astro-logo.png';
+import logo2 from '@images/astro-logo.svg';
+import Layout from '@layouts/Layout.astro';
 
 // import dogs from "../data/dogs.json";
 /* global confetti */
@@ -32,14 +32,14 @@ import Layout from "@layouts/Layout.astro";
     </div>
     <Counter1 label="Alpine" start={3} />
     <Counter2 label="Svelte" start={3} client:load />
-    <Counter2 label="React" start={3} client:load />
+    <Counter3 label="React" start={3} client:load />
     <!-- <Icon name="mdi:account" /> -->
     <Border color="red">
       What is with this code?
       <br />
-       Oh my, looks like I wrote it.
+      Oh my, looks like I wrote it.
       <br />
-       What was I thinking?
+      What was I thinking?
     </Border>
   </main>
 </Layout>
@@ -51,12 +51,12 @@ import Layout from "@layouts/Layout.astro";
     confetti({
       particleCount: 100,
       spread: 180,
-      origin: { y: 1 },
+      origin: {y: 1}
     });
   }
 
-  const myBtn = document.getElementById("my-btn");
-  if (myBtn) myBtn.addEventListener("click", handleClick);
+  const myBtn = document.getElementById('my-btn');
+  if (myBtn) myBtn.addEventListener('click', handleClick);
 </script>
 
 <style>

@@ -1,15 +1,15 @@
-import { defineCollection, z } from "astro:content";
+import {defineCollection, z} from 'astro:content';
 
 // The schema is defined using Zod.
 const string = z.string();
 const dogs = defineCollection({
-  type: "content",
+  type: 'content',
   schema: z.object({
     breed: string,
     name: string,
     image: string,
-    website: string,
-  }),
+    website: string
+  })
 });
 
-export const collections = { dogs };
+export const collections = {dogs};
