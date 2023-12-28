@@ -24,6 +24,9 @@ const $dog = map<Dog>({
 
 // @ts-ignore
 globalThis.ns = {
+  setCount(value: number) {
+    count.set(value);
+  },
   subscribeToCount(data: CountData) {
     console.log('stores.ts subscribeToCount: entered');
     count.subscribe(value => (data.count = value));

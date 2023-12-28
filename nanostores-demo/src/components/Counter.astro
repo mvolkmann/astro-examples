@@ -13,17 +13,10 @@ const {label = ''} = Astro.props;
   x-effect="setCount(Number(count))"
 >
   {label && <div>{label}</div>}
-  <button :disabled="count <= 0" @click="setCount(count - 1)">-</button>
+  <button :disabled="count <= 0" @click="ns.setCount(count - 1)">-</button>
   <div x-text="count"></div>
-  <button @click="setCount(count + 1)">+</button>
+  <button @click="ns.setCount(count + 1)">+</button>
 </div>
-
-<script>
-  import {count} from '../stores.ts';
-
-  // @ts-ignore
-  globalThis.setCount = count.set;
-</script>
 
 <style>
   .row {
