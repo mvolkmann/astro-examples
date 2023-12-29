@@ -26,11 +26,22 @@ export const onRequest = defineMiddleware(async (context, next) => {
     // Check for authentication.
     const authorization = headers.get('Authorization');
     if (!authorization) {
+      /*
       return new Response('Unauthorized', {
         status: 401,
         headers: {
           'Cache-Control': 'no-cache, no-store, must-revalidate',
           'WWW-Authenticate': 'Basic realm="Secure Area"'
+        }
+      });
+      */
+      //return Response.redirect(url.origin + '/unauthorized', 401);
+      return new Response('Unauthorized', {
+        // status: 401, // "Forbidden"; will not redirect to Location
+        status: 302, // "See Other"; will redirect to Location
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          Location: url.origin + '/unauthorized'
         }
       });
     }
