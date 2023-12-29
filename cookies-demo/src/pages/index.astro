@@ -21,12 +21,10 @@ if (Astro.cookies.has('score')) {
   // @ts-ignore
   globalThis.ns = {
 	setScore(score: number) {
-      console.log('index.astro setScore: score =', score);
 	  // Expire in 5 minutes.
 	  const ms = 5 * 60 * 1000;
-	  const expires = new Date(Date.now() + ms).toString();
-	  const cookie = `score=${score}; expires=${expires}; path=/report`;
-	  console.log('index.astro setScore: cookie =', cookie);
+	  const expires = new Date(Date.now() + ms).toUTCString();
+	  const cookie = `score=${score}; expires=${expires}`;
 	  document.cookie = cookie;
     }
   };
