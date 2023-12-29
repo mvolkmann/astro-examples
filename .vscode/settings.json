@@ -1,3 +1,9 @@
 {
-  "cSpell.words": ["alpinejs", "astrojs", "nanostores"]
+  "cSpell.words": [
+    "alpinejs",
+    "astrojs",
+    "nanostore",
+    "nanostores",
+    "tsconfigs"
+  ]
 }
