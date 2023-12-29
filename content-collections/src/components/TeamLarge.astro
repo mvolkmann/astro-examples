@@ -1,5 +1,7 @@
 ---
 import {type CollectionEntry} from 'astro:content';
+import { marked } from 'marked';
+import sanitizeHtml from 'sanitize-html';
 
 interface Props {
   team: CollectionEntry<'nfl'>;
@@ -8,7 +10,9 @@ interface Props {
 const {team} = Astro.props;
 const {city, conference, established, headCoach, logoUrl, name} = team.data;
 
-const { Content } = await team.render();
+// const { Content } = await team.render();
+const content = sanitizeHtml(team.body);
+const html = marked.parse(content);
 ---
 
 <div
@@ -31,9 +35,9 @@ const { Content } = await team.render();
     established in {established}
   </div>
 
-  <div class="mt-4 w-[30rem]">
-    <Content />
-  </div>
+  <div class="mt-4 prose w-[30rem]" set:html={html} />
+    <!-- <Content /> -->
+  <!-- </div> -->
 
   <img
     alt="team logo"
