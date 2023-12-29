@@ -28,7 +28,7 @@ const $dog = map<Dog>({
 
 // @ts-ignore
 globalThis.ns = {
-  setupCount(data: CountData) {
+  syncCount(data: CountData) {
     count.subscribe(value => (data.count = value));
     data.setCount = count.set;
   },

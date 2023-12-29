@@ -11,7 +11,7 @@ const {label = ''} = Astro.props;
 <div
   class="row"
   x-data
-  x-init="ns.setupCount($data)"
+  x-init="ns.syncCount($data)"
   x-effect="setCount(count)"
 >
   {label && <div>{label}</div>}
@@ -19,13 +19,6 @@ const {label = ''} = Astro.props;
   <div x-text="count"></div>
   <button @click="count++">+</button>
 </div>
-
-<!-- is:inline seems to be required for Alpine to see functions. -->
-<!-- type="module" is require to use import. -->
-<!-- <script is:inline type="module">
-  import {subscribeToCount} from '../stores.ts';
-  console.log('Counter.astro : subscribeToCount =', subscribeToCount);
-</script> -->
 
 <style>
   .row {

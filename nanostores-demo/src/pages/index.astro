@@ -14,6 +14,7 @@ import Counter3 from '../components/Counter.astro';
   <main x-data>
     <Counter1 label="React" client:load />
     <Counter2 label="Svelte" client:load />
+    <!-- client:* directives cannot be applied to Astro components. -->
     <Counter3 label="Astro" />
 
     <SelectScore initialValue={3} />
