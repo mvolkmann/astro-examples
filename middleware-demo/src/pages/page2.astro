@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const data = Astro.locals;
+console.log('page2.astro : data =', data);
+---
+
+<Layout>
+  <h1>Page 2</h1>
+  <h2>{data.title}</h2>
+  <p>This {data.score} is from middleware.</p>
+  <a href="/">Home</a>
+</Layout>

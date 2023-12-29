@@ -4,6 +4,7 @@
     "astrojs",
     "nanostore",
     "nanostores",
+    "Parens",
     "tsconfigs"
   ]
 }

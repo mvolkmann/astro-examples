@@ -1,0 +1,19 @@
+{
+  "name": "middleware-demo",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro check && astro build",
+    "dev": "astro dev",
+    "format": "prettier --write '{public,src}/**/*.{astro,css,html,js,ts}'",
+    "preview": "astro preview",
+    "start": "astro dev"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.4",
+    "astro": "^4.0.8",
+    "prettier-plugin-astro": "^0.12.3",
+    "typescript": "^5.3.3"
+  }
+}
