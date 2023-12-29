@@ -1,12 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-let score = 0;
-
-if (Astro.cookies.has('score')) {
-  const cookie = Astro.cookies.get('score');
-  if (cookie) score = cookie.number();
-}
+const cookie = Astro.cookies.get('score');
+let score = cookie?.number() ?? 0;
 ---
 
 <Layout>
