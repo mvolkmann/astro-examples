@@ -24,8 +24,7 @@ if (Astro.cookies.has('score')) {
 	  // Expire in 5 minutes.
 	  const ms = 5 * 60 * 1000;
 	  const expires = new Date(Date.now() + ms).toUTCString();
-	  const cookie = `score=${score}; expires=${expires}`;
-	  document.cookie = cookie;
+	  document.cookie = `score=${score}; expires=${expires}`;
     }
   };
 </script>
