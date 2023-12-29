@@ -7,7 +7,10 @@ console.log('index.astro : data =', data);
 
 <Layout>
   <h1>Home Page</h1>
+
   <h2>{data.title}</h2>
-  <p>This {data.score} is from middleware.</p>
-  <a href="/page2">Page 2</a>
+  <p>Score = {data.score}</p>
+
+  <a href="/public">Public</a>
+  <a href="/secret">Secret</a>
 </Layout>
