@@ -11,6 +11,8 @@ This is used in scenarios like type-safe routing,
 state management, and handling collection entities.
 */
 const dogs: CollectionEntry<'dogs'>[] = await getCollection('dogs');
+
+export const prerender = true;
 ---
 
 <Layout title="Dogs I Know" transition:animate={slide({duration: '2s'})}>
