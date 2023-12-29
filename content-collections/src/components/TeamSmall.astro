@@ -9,7 +9,7 @@ const {team} = Astro.props;
 const {city, name, conference, logoUrl} = team.data;
 ---
 
-<a class="bg-yellow-100 flex flex-col inline-flex items-center p-4 rounded-lg font-bold"
+<a class="bg-yellow-100 flex-col inline-flex items-center p-4 rounded-lg font-bold"
 href={`${name}`}>
   <div transition:name={`${name}-name`}>{city} {name}</div>
   <div class="text-[0]" transition:name={`${name}-conference`}>{conference}</div>

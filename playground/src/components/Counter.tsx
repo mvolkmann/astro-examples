@@ -7,7 +7,6 @@ interface Props {
 
 const Counter: FC<Props> = ({label = '', start = 0}) => {
   const [count, setCount] = useState(start);
-
   return (
     <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
       {label && <div>{label}</div>}
