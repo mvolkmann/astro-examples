@@ -1,17 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-let score = 0;
-
-if (Astro.cookies.has('score')) {
-  // If the output mode is "static", this will output the following warning:
-  // [WARN] `Astro.request.headers` is not available in "static" output mode.
-  // To enable header access: set `output: "server"`
-  // or `output: "hybrid"` in your config file.
-  const cookie = Astro.cookies.get('score');
-  console.log('report.astro: cookie =', cookie);
-  if (cookie) score = cookie.number();
-}
+// If the output mode is "static", this will output the following warning:
+// [WARN] `Astro.request.headers` is not available in "static" output mode.
+// To enable header access, enable SSR.
+const cookie = Astro.cookies.get('score');
+const score = cookie?.number() ?? 0;
 ---
 
 <Layout>
