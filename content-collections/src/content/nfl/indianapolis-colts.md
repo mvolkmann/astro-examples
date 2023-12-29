@@ -1,6 +1,6 @@
 ---
 city: Indianapolis
-name: Colt
+name: Colts
 conference: AFC South
 logoUrl: https://static.www.nfl.com/image/private/f_auto/league/ketwqeuschqzjsllbid5
 headCoach: Shane Steichen
