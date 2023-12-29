@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+let score = 0;
+
+if (Astro.cookies.has('score')) {
+  const cookie = Astro.cookies.get('score');
+  if (cookie) score = cookie.number();
+}
+---
+
+<Layout>
+  <div x-data={`{score: ${score}}`} x-effect="ns.setScore(Number(score))">
+    <input type="range" min="0" max="10" x-model="score" />
+    <span x-text="score"></span>
+  </div>
+  <a href="/report">Report</a>
+</Layout>
+
+<script>
+  // @ts-ignore
+  globalThis.ns = {
+	setScore(score: number) {
+      console.log('index.astro setScore: score =', score);
+	  // Expire in 5 minutes.
+	  const ms = 5 * 60 * 1000;
+	  const expires = new Date(Date.now() + ms).toString();
+	  const cookie = `score=${score}; expires=${expires}; path=/report`;
+	  console.log('index.astro setScore: cookie =', cookie);
+	  document.cookie = cookie;
+    }
+  };
+</script>
+
+<style>
+  input[type='range'] {
+    width: 20rem;
+  }
+</style>
