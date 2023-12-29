@@ -18,10 +18,8 @@ export async function getStaticPaths() {
 const { name } = Astro.params;
 const team = teams.find((team) => team.data.name === name);
 if (!team) return new Response('', { status: 404 });
-
-export const prerender = false;
 ---
 
 <Layout>
-    {team ? <TeamLarge {team} /> : <p>Team {name} not found.</p>}
+  {team ? <TeamLarge {team} /> : <p>Team {name} not found.</p>}
 </Layout>
