@@ -1,27 +1,54 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RenderDog from '../components/RenderDog.astro';
-import RenderScore from '../components/RenderScore.astro';
-import SelectScore from '../components/SelectScore.astro';
 import Counter1 from '../components/Counter.tsx';
 import Counter2 from '../components/Counter.svelte';
 import Counter3 from '../components/Counter.astro';
-import '../stores'; // sets global variables
+import RenderScore from '../components/RenderScore.astro';
+import SelectScore from '../components/SelectScore.astro';
 ---
+
+<script type="module">
+  import '/src/stores.js'; // sets global variables
+</script>
 
 <Layout>
   <h1>nanostores Demo</h1>
 
-  <main x-data>
+  <main x-data x-init="topSetup($data)">
     <Counter1 label="React" client:load />
     <Counter2 label="Svelte" client:load />
     <!-- client:* directives cannot be applied to Astro components. -->
     <Counter3 label="Astro" />
 
-    <SelectScore initialValue={3} />
-    <RenderScore />
-
     <RenderDog />
-    <button @click="stores.toggleDog">Toggle Dog</button>
+    <button @click="toggleDog">Toggle Dog</button>
+
+    <SelectScore />
+    <RenderScore />
   </main>
 </Layout>
+
+<script defer>
+  function topSetup(data) {
+    const {dog, score, status} = stores;
+
+    dog.subscribe(dog => data.dog = dog);
+    data.toggleDog = () => {
+      // The get method retrieves the entire object.
+      // There is no getKey method.
+      const {name} = dog.get();
+
+      // The set method changes the entire object.
+      // The setKey method changes a single property.
+      dog.setKey('name', name === 'Comet' ? 'Oscar' : 'Comet');
+      dog.setKey('breed', name === 'Comet' ? 'GSP' : 'Whippet');
+    };
+
+    score.subscribe(score => {
+      data.score = score;
+      data.status = status.get();
+    });
+    data.setScore = score.set;
+  }
+</script>

@@ -9,8 +9,8 @@ const {label = ''} = Astro.props;
 <div
   class="row"
   x-data
-  x-init="setup($data)"
-  x-effect="setCount(count)"
+  x-init="counterSetup($data)"
+  x-effect="setCount(Number(count))"
 >
   {label && <div>{label}</div>}
   <button :disabled="count <= 0" @click="count--">-</button>
@@ -19,7 +19,7 @@ const {label = ''} = Astro.props;
 </div>
 
 <script defer>
-  function setup(data) {
+  function counterSetup(data) {
     const {count} = stores;
     count.subscribe(value => (data.count = value));
     data.setCount = count.set;
