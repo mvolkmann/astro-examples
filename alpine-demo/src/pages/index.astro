@@ -1,13 +1,11 @@
-<div x-data="{score: 3}" x-effect="ns.log(score)">
+<div x-data="{score: 3}" x-effect="log(score)">
   <input type="range" min="0" max="10" x-model="score" />
+   *
   <span x-text="score"></span>
 </div>
 
-<script>
-  // @ts-ignore
-  globalThis.ns = {
-    log(score: number) {
-      console.log(score);
-    },
-  };
+<script defer>
+  function log(score) {
+    console.log(score);
+  }
 </script>
