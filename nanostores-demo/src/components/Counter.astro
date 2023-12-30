@@ -11,7 +11,7 @@ const {label = ''} = Astro.props;
 <div
   class="row"
   x-data
-  x-init="ns.syncCount($data)"
+  x-init="stores.syncCount($data)"
   x-effect="setCount(count)"
 >
   {label && <div>{label}</div>}

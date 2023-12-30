@@ -27,7 +27,7 @@ const $dog = map<Dog>({
 });
 
 // @ts-ignore
-globalThis.ns = {
+globalThis.stores = {
   syncCount(data: CountData) {
     count.subscribe(value => (data.count = value));
     data.setCount = count.set;
