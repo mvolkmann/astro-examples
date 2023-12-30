@@ -1,5 +1,5 @@
 <script>
-  import {count} from '../stores.ts';
+  const {count} = globalThis.stores;
 
   export let label = '';
 </script>
@@ -8,7 +8,7 @@
   {#if label}
     <div>{label}</div>
   {/if}
-  <!-- Add $ prefix to get the value of a nanostore. -->
+  <!-- In Svelte, add $ prefix to get the value of a nanostore. -->
   <button disabled={$count <= 0} on:click={() => count.set($count - 1)}>-</button>
   <div>{$count}</div>
   <button on:click={() => count.set($count + 1)}>+</button>

@@ -1,12 +1,13 @@
 import {type FC} from 'react';
 import {useStore} from '@nanostores/react';
-import {count} from '../stores.ts';
 
 interface Props {
   label?: string;
 }
 
 const Counter: FC<Props> = ({label = ''}) => {
+  // @ts-ignore
+  const {count} = globalThis.stores;
   const value = useStore(count);
   return (
     <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>

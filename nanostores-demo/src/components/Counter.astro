@@ -13,7 +13,7 @@ const {label = ''} = Astro.props;
 <div
   class="row"
   x-data
-  x-init="stores.syncCount($data)"
+  x-init="setup($data)"
   x-effect="setCount(count)"
 >
   {label && <div>{label}</div>}
@@ -21,6 +21,14 @@ const {label = ''} = Astro.props;
   <div x-text="count"></div>
   <button @click="count++">+</button>
 </div>
+
+<script defer>
+  function setup(data) {
+    const {count} = stores;
+    count.subscribe(value => (data.count = value));
+    data.setCount = count.set;
+  }
+</script>
 
 <style>
   .row {
