@@ -22,16 +22,19 @@ const $dog = map<Dog>({
 // @ts-ignore
 globalThis.stores = {
   count: atom<number>(1),
+  // TODO: Does this still need to be here instead of in the component that uses it?
   subscribeToDog(data: Dog) {
     $dog.subscribe(dog => {
       data.name = dog.name;
       data.breed = dog.breed;
     });
   },
+  // TODO: Does this still need to be here instead of in the component that uses it?
   subscribeToScore(data: ScoreData) {
     $score.subscribe(score => (data.score = score));
     $status.subscribe(status => (data.status = status));
   },
+  // TODO: Does this still need to be here instead of in the component that uses it?
   toggleDog() {
     // The get method retrieves the entire object.
     // There is no getKey method.
