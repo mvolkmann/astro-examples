@@ -6,10 +6,6 @@ interface Props {
 const {label = ''} = Astro.props;
 ---
 
-<!-- The x-data attribute is not needed here
-     if it is present on an ancestor element. -->
-<!-- This component doesn't need to import stores.ts because
-     both Counter.tsx and Counter.svelte already do it. -->
 <div
   class="row"
   x-data
