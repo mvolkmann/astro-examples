@@ -16,11 +16,10 @@ let score = cookie?.number() ?? 0;
 <script>
   // @ts-ignore
   globalThis.ns = {
-	setScore(score: number) {
-	  // Expire in 5 minutes.
-	  const ms = 5 * 60 * 1000;
-	  const expires = new Date(Date.now() + ms).toUTCString();
-	  document.cookie = `score=${score}; expires=${expires}`;
+    setScore(score: number) {
+      const ms = 5 * 60 * 1000; // 5 minutes
+      const expires = new Date(Date.now() + ms).toUTCString();
+      document.cookie = `score=${score}; expires=${expires}`;
     }
   };
 </script>
