@@ -1,0 +1,20 @@
+{
+  "name": "alpine-demo",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/alpinejs": "^0.3.2",
+    "@astrojs/check": "^0.3.4",
+    "@types/alpinejs": "^3.13.5",
+    "alpinejs": "^3.13.3",
+    "astro": "^4.0.8",
+    "typescript": "^5.3.3"
+  }
+}
