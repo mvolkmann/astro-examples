@@ -1,0 +1,24 @@
+<div x-data>
+  <button @click="fn1">fn1</button>
+  <button @click="fn2">fn2</button>
+  <button @click="fn3">fn3</button>
+</div>
+
+<script is:inline>
+  function fn1() {
+    console.log('in fn1');
+  }
+</script>
+
+<script defer>
+  function fn2() {
+    console.log('in fn2');
+  }
+</script>
+
+<script defer>
+  let fn3;
+  import('/src/my-module.js').then(module => {
+    fn3 = module.fn3;
+  });
+</script>
