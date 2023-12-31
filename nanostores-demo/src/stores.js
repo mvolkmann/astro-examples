@@ -1,4 +1,3 @@
-console.log('stores.js: entered');
 import {atom, computed, map} from 'nanostores';
 
 const score = atom(0);
@@ -13,5 +12,3 @@ globalThis.stores = {
   score,
   status: computed(score, value => (value === 10 ? 'win' : 'play'))
 };
-
-console.log('stores.js: globalThis.stores =', globalThis.stores);
