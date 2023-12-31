@@ -13,8 +13,8 @@ import SelectScore from '../components/SelectScore.astro';
   <h1>nanostores Demo</h1>
 
   <main x-data x-init="topSetup($data)">
-    <Counter1 label="React" client:load />
-    <Counter2 label="Svelte" client:load />
+    <Counter1 label="React" client:only="react" />
+    <Counter2 label="Svelte" client:only="svelte" />
     <!-- client:* directives cannot be applied to Astro components. -->
     <Counter3 label="Astro" />
 
