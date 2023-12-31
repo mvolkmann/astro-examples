@@ -17,10 +17,11 @@
 </script>
 
 <script defer>
-  let fn3;
-  import('/src/my-module.js').then(module => {
-    fn3 = module.fn3;
-  }).catch(err => {
-    console.log('Demo.astro error importing my-module.js:', err);
-  })
+  if (typeof fn3 === 'undefined') {
+    import('/src/my-module.js').then(module => {
+      fn3 = module.fn3;
+    }).catch(err => {
+      console.log('Demo.astro error importing my-module.js:', err);
+    })
+  } 
 </script>
