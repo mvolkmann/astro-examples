@@ -32,10 +32,17 @@ import SelectScore from '../components/SelectScore.astro';
 <script src="/src/stores.js"></script>
 
 <script defer>
+  function sync(store, data, property) {
+    store.subscribe(value => data[property] = value);
+  }
+
   function topSetup(data) {
     const {dog, score, status} = stores;
 
-    dog.subscribe(dog => data.dog = dog);
+    sync(dog, data, 'dog');
+    sync(score, data, 'score');
+    sync(status, data, 'status');
+
     data.toggleDog = () => {
       // The get method retrieves the entire object.
       // There is no getKey method.
@@ -47,10 +54,6 @@ import SelectScore from '../components/SelectScore.astro';
       dog.setKey('breed', name === 'Comet' ? 'GSP' : 'Whippet');
     };
 
-    score.subscribe(score => {
-      data.score = score;
-      data.status = status.get();
-    });
     data.setScore = score.set;
   }
 </script>
