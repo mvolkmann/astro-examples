@@ -1,0 +1,62 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import {getCollection, getEntry, type CollectionEntry} from 'astro:content';
+import TeamSmall from '../components/TeamSmall.astro';
+import Layout from '../layouts/Layout.astro';
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export const getStaticPaths = (async ({paginate}) => {
+    const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
+    const pages = teams.map((team) => (
+        { params: { slug: team.slug } }
+    ));
+    return paginate(pages, { pageSize: 4 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props as Props;
+const { currentPage, data, lastPage, url } = page;
+const nextUrl = url.next;
+const prevUrl = url.prev;
+
+// Get entries to render on the current page.
+const promises = data.map(async (obj) => getEntry('nfl', obj.params.slug));
+const entries = await Promise.all(promises);
+---
+
+<Layout>
+  <main class="bg-black h-full min-h-screen p-8">
+    <h1>Page {currentPage} of {lastPage}</h1>
+    <nav>
+      <a href="/">First</a>
+      <a class={prevUrl ? '' : 'disabled'} href={prevUrl}>Previous</a>
+      <a class={nextUrl ? '' : 'disabled'} href={nextUrl}>Next</a>
+      <a href={`/${lastPage}`}>Last</a>
+    </nav>
+    <section class="gap-4 grid grid-cols-4">
+      {entries.map(entry => <TeamSmall team={entry} />)}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  a {
+    background-color: cornflowerblue;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+  a.disabled {
+    background-color: lightgray;
+    color: gray;
+  }
+
+  h1 {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  h1, nav {
+    margin-bottom: 1rem;
+  }
+</style>
