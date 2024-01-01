@@ -8,6 +8,7 @@
     "dev": "astro dev",
     "format": "prettier --write '{public,src}/**/*.{astro,css,html,js,ts}'",
     "preview": "astro preview",
+    "reinstall": "rm -rf node_modules package-lock.json && npm install",
     "start": "astro dev"
   },
   "dependencies": {
