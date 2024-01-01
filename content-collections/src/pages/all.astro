@@ -22,6 +22,7 @@ const conferences = Object.keys(byConference).sort();
 
 <Layout>
   <main class="bg-black h-full min-h-screen p-8">
+    <a href="/">Paginated</a>
     {conferences.map(conference => {
       const label = <div class="my-2 text-white">{conference}</div>;
       const teams = byConference[conference];
@@ -34,3 +35,11 @@ const conferences = Object.keys(byConference).sort();
     })}
   </main>
 </Layout>
+
+<style>
+  a {
+    background-color: cornflowerblue;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+</style>

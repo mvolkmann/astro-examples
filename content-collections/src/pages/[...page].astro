@@ -32,6 +32,7 @@ const entries = await Promise.all(promises);
       <a class={prevUrl ? '' : 'disabled'} href={prevUrl}>Previous</a>
       <a class={nextUrl ? '' : 'disabled'} href={nextUrl}>Next</a>
       <a href={`/${lastPage}`}>Last</a>
+      <a href="/all">All</a>
     </nav>
     <section class="gap-4 grid grid-cols-4">
       {entries.map(entry => <TeamSmall team={entry} />)}
