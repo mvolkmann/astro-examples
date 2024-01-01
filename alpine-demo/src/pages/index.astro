@@ -1,11 +1,20 @@
-<div x-data="{score: 3}" x-effect="log(score)">
-  <input type="range" min="0" max="10" x-model="score" />
-   *
-  <span x-text="score"></span>
-</div>
+<main x-data="{count: 0, score: 3}" x-effect="log(score)" x-init="setup($data)">
+  <div>
+    <input type="range" min="0" max="10" x-model="score" />
+     *
+    <span x-text="score"></span>
+  </div>
+  <div x-text="count"></div>
+</main>
 
-<script defer>
+<script is:inline>
   function log(score) {
     console.log(score);
+  }
+
+  function setup(data) {
+    setInterval(() => {
+      data.count++;
+    }, 1000);
   }
 </script>
