@@ -12,7 +12,7 @@ export const getStaticPaths = (async ({paginate}) => {
     const pages = teams.map((team) => (
         { params: { slug: team.slug } }
     ));
-    return paginate(pages, { pageSize: 4 });
+    return paginate(pages, { pageSize: 8 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props as Props;
