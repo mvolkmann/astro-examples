@@ -2,6 +2,7 @@
   <button @click="fn1">fn1</button>
   <button @click="fn2">fn2</button>
   <button @click="fn3">fn3</button>
+  <button @click="ns.fn4">fn4</button>
 </div>
 
 <script is:inline>
@@ -16,7 +17,7 @@
   }
 </script>
 
-<script defer>
+<script is:inline>
   if (typeof fn3 === 'undefined') {
     import('/src/my-module.js').then(module => {
       fn3 = module.fn3;
@@ -25,3 +26,5 @@
     })
   } 
 </script>
+
+<script src="./my-script.js"></script>
