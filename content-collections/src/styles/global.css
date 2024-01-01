@@ -1,0 +1,20 @@
+a {
+  background-color: cornflowerblue;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+a.disabled {
+  background-color: lightgray;
+  color: gray;
+}
+
+h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+p {
+  color: white;
+  margin-bottom: 1rem;
+}

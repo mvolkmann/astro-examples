@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import TeamSmall from '../components/TeamSmall.astro';
 import {getCollection, type CollectionEntry} from 'astro:content';
+import '../styles/global.css';
 
 const teams: CollectionEntry<'nfl'>[] = await getCollection('nfl');
 
@@ -35,11 +36,3 @@ const conferences = Object.keys(byConference).sort();
     })}
   </main>
 </Layout>
-
-<style>
-  a {
-    background-color: cornflowerblue;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-  }
-</style>

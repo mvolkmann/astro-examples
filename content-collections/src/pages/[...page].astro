@@ -3,6 +3,7 @@ import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 import {getCollection, getEntry, type CollectionEntry} from 'astro:content';
 import TeamSmall from '../components/TeamSmall.astro';
 import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -27,6 +28,7 @@ const entries = await Promise.all(promises);
 <Layout>
   <main class="bg-black h-full min-h-screen p-8">
     <h1>Page {currentPage} of {lastPage}</h1>
+    <p>The teams appear alphabetically by their city.</p>
     <nav>
       <a href="/">First</a>
       <a class={prevUrl ? '' : 'disabled'} href={prevUrl}>Previous</a>
@@ -41,22 +43,6 @@ const entries = await Promise.all(promises);
 </Layout>
 
 <style>
-  a {
-    background-color: cornflowerblue;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-  }
-  a.disabled {
-    background-color: lightgray;
-    color: gray;
-  }
-
-  h1 {
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-  }
-
   h1, nav {
     margin-bottom: 1rem;
   }
