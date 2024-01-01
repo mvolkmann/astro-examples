@@ -1,5 +1,12 @@
+<!-- The "x-effect" directive calls the "log" function
+     every time the value of "score" changes.
+     The "x-init" directive passes the "x-data" object to the "setup" function
+     which updates the value of the "count" property every second.
+     This demonstrates how JavaScript code can trigger DOM updates
+     just by changing the values of "x-data" properties. -->
 <main x-data="{count: 0, score: 3}" x-effect="log(score)" x-init="setup($data)">
   <div>
+    <!-- The range input uses x-model to update score in the x-data object. -->
     <input type="range" min="0" max="10" x-model="score" />
      *
     <span x-text="score"></span>
