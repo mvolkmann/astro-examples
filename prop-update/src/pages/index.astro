@@ -8,12 +8,17 @@ import Main from '../components/Main.svelte';
   <div x-data="{ count: 0 }">
 	<button @click="count++">Increment</button>
 	<div>index count = <span x-text="count"></span></div>
-	<ShowCount count={19} />
+	<!-- <ShowCount count={getCount()} /> -->
 	<button @click="log">Log count</button>
   </div>
   <Main client:load />
 
   <script is:inline>
+	function getCount() {
+	  return this.count;
+	}
+	globalThis.getCount = getCount;
+
 	function log() {
       console.log('index.astro log: count =', this.count);
 	}
