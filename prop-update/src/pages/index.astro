@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ShowCount from '../components/ShowCount.astro';
+import Main from '../components/Main.svelte';
+---
+
+<Layout>
+  <div x-data="{ count: 0 }">
+	<button @click="count++">Increment</button>
+	<div>index count = <span x-text="count"></span></div>
+	<ShowCount count={19} />
+	<button @click="log">Log count</button>
+  </div>
+  <Main client:load />
+
+  <script is:inline>
+	function log() {
+      console.log('index.astro log: count =', this.count);
+	}
+  </script>
+</Layout>

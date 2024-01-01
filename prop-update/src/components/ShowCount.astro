@@ -1,0 +1,10 @@
+---
+import type { AstroComponentInstance } from 'astro/runtime/server/index.js';
+type Props = {
+  count: number;
+}
+
+const { count } = Astro.props;
+---
+
+<div>Astro count = {count}</div>
