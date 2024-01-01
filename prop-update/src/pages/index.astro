@@ -8,7 +8,8 @@ import Main from '../components/Main.svelte';
   <div x-data="{ count: 0 }">
 	<button @click="count++">Increment</button>
 	<div>index count = <span x-text="count"></span></div>
-	<!-- <ShowCount count={getCount()} /> -->
+	<!-- TODO: Why does VS Code think a value attribute is required here? -->
+	<ShowCount value={0} />
 	<button @click="log">Log count</button>
   </div>
   <Main client:load />

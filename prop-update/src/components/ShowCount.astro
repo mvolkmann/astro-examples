@@ -1,10 +1,4 @@
----
-import type { AstroComponentInstance } from 'astro/runtime/server/index.js';
-type Props = {
-  count: number;
-}
-
-const { count } = Astro.props;
----
-
-<div>Astro count = {count}</div>
+<!-- This replies on an ancestor element having an "x-data" directive
+     whose value is an object with a "count" property. -->
+import type { isPropertyAccessChain } from 'typescript';
+<div>Astro count = <span x-text="count" /></div>
