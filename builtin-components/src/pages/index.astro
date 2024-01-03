@@ -2,9 +2,10 @@
 import { Picture } from "astro:assets";
 import { Code } from "astro:components";
 import { Prism } from "@astrojs/prism";
-import "../styles/prism-gruvbox-dark.css";
-import myDog from "../images/comet.png";
 import Text from "../components/Text.astro";
+import myDog from "../images/comet.png";
+import Layout from "../layouts/Layout.astro";
+import "../styles/prism-gruvbox-dark.css";
 
 const codeString = `
 for (const dog of dogs) {
@@ -17,26 +18,17 @@ const htmlString = `
 `;
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <Text>First</Text>
-    <Text fg="white" bg="blue">Second</Text>
+<Layout>
+  <Text>First</Text>
+  <Text fg="white" bg="blue">Second</Text>
 
-    <h1>Builtin Components</h1>
+  <h1>Builtin Components</h1>
 
-    <Code code={codeString.trim()} lang="js" />
-    <Fragment set:html={htmlString} />
-    <Prism code={codeString.trim()} lang="js" />
-    <Picture alt="my dog" src={myDog} formats={["webp", "avif"]} width={400} />
-  </body>
-</html>
+  <Code code={codeString.trim()} lang="js" />
+  <Fragment set:html={htmlString} />
+  <Prism code={codeString.trim()} lang="js" />
+  <Picture alt="my dog" src={myDog} formats={["webp", "avif"]} width={400} />
+</Layout>
 
 <style is:global>
   .astro-code {
