@@ -6,25 +6,28 @@
 </div>
 
 <script is:inline>
+  console.log('demo.astro: is:inline running');
   function fn1() {
     console.log('in fn1');
   }
 </script>
 
 <script defer>
+  console.log('demo.astro: defer running');
   function fn2() {
     console.log('in fn2');
   }
 </script>
 
 <script is:inline>
-  if (typeof fn3 === 'undefined') {
+  console.log('demo.astro: dynamic import running');
+  // if (typeof fn3 === 'undefined') {
     import('/src/my-module.js').then(module => {
       fn3 = module.fn3;
     }).catch(err => {
       console.log('Demo.astro error importing my-module.js:', err);
     })
-  } 
+  // } 
 </script>
 
 <script src="./my-script.js"></script>
