@@ -2,7 +2,7 @@ import type { APIContext, APIRoute } from "astro";
 import { categorizeByAge } from "../../categorize.ts";
 
 // This is used when the form action is "/api/form-handler".
-// This requires SSR configuration!
+// This requires SSR configuration.
 export const POST: APIRoute = async ({
   request,
 }: APIContext): Promise<Response> => {
@@ -15,7 +15,7 @@ export const POST: APIRoute = async ({
   return new Response("", {
     status: 302, // redirect
     headers: {
-      "Cache-Control": "no-cache, no-store, must-revalidate",
+      // "Cache-Control": "no-cache, no-store, must-revalidate",
       Location: `/form-handler?message=${message}`,
     },
   });
