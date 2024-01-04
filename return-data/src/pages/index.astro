@@ -9,6 +9,8 @@ import Layout from "../layouts/Layout.astro";
       <button @click="count++">Increment</button>
       <span x-text="count"></span>
 
+      <!-- SSG components cannot pass functions to any other components,
+      so there is no way for a React or Svelte component to return data. -->
       <Counter
         :count="count"
         label="React"
