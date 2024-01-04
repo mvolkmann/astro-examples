@@ -1,4 +1,4 @@
-import {defineCollection, z} from 'astro:content';
+import {defineCollection, reference, z} from 'astro:content';
 
 const nfl = defineCollection({
   type: 'content',
@@ -8,7 +8,8 @@ const nfl = defineCollection({
     conference: z.string(),
     logoUrl: z.string(),
     headCoach: z.string(),
-    established: z.number()
+    established: z.number(),
+    relatedTeams: z.array(reference('nfl')).optional()
   })
 });
 

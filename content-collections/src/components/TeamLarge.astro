@@ -1,5 +1,5 @@
 ---
-import {type CollectionEntry} from 'astro:content';
+import {getEntries, type CollectionEntry} from 'astro:content';
 import { marked } from 'marked';
 import sanitizeHtml from 'sanitize-html';
 
@@ -8,7 +8,8 @@ interface Props {
 }
 
 const {team} = Astro.props;
-const {city, conference, established, headCoach, logoUrl, name} = team.data;
+const {city, conference, established, headCoach, logoUrl, name, relatedTeams} = team.data;
+const relatedEntries = await getEntries(relatedTeams || []);
 
 // const { Content } = await team.render();
 const content = sanitizeHtml(team.body);
@@ -36,8 +37,14 @@ const html = marked.parse(content);
   </div>
 
   <div class="mt-4 prose w-[30rem]" set:html={html} />
-    <!-- <Content /> -->
-  <!-- </div> -->
+
+  <!-- <Content /> -->
+
+  <ul>
+    {relatedEntries.map((entry) => (
+      <li>{entry.data.name}</li>
+    ))}
+  </ul>
 
   <img
     alt="team logo"

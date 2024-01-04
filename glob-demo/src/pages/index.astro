@@ -1,0 +1,26 @@
+---
+const teams = await Astro.glob("../data/nfl/*.md");
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Astro.glob Demo</h1>
+    {
+      teams.map(({ Content, frontmatter }) => (
+        <div>
+          <h2>
+            {frontmatter.name} {frontmatter.city}
+          </h2>
+          <Content />
+        </div>
+      ))
+    }
+  </body>
+</html>
