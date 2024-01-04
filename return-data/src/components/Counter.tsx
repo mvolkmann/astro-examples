@@ -1,13 +1,18 @@
-import { type FC, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 
 interface Props {
   count: number;
   label?: string;
+  setCount: (count: number) => void;
 }
 
-const Counter: FC<Props> = ({ count, label = "" }) => {
-  console.log("Counter.tsx : count =", count);
+const Counter: FC<Props> = ({ count = 0, label = "", setCount }) => {
   const [value, setValue] = useState(count);
+
+  useEffect(() => {
+    setCount(value);
+  }, [value]);
+
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
       {label && <div>{label}</div>}

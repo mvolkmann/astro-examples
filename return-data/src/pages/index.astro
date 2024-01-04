@@ -1,32 +1,20 @@
 ---
 import Counter1 from "../components/Counter.tsx";
-import Counter2 from "../components/Counter.svelte";
-import Counter3 from "../components/Counter.astro";
+// import Counter2 from "../components/Counter.svelte";
+// import Counter3 from "../components/Counter.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<script is:inline>
-  globalThis.counts = {
-    react: 1,
-    svelte: 2,
-    astro: 3,
-  };
-  console.log("index.astro: counts =", globalThis.counts);
-</script>
-
 <Layout>
-  <h1>Returning Data</h1>
-  <div>
-    <Counter1 count={globalThis.counts.react} label="React" client:load />
-    <span>{globalThis.counts.react}</span>
-  </div>
-  <div>
-    <Counter2 count={globalThis.counts.svelte} label="Svelte" client:load />
-    <span>{globalThis.counts.svelte}</span>
-  </div>
-  <div>
-    <!-- client:* directives cannot be applied to Astro components. -->
-    <Counter3 count={globalThis.counts.svelte} label="Astro" />
-    <span>{globalThis.counts.astro}</span>
-  </div>
+  <main x-data="{react: 1}">
+    <div>
+      <Counter1
+        :count="react"
+        label="React"
+        setCount={(count: number) => ($data.react = count)}
+        client:load
+      />
+      <span x-text="react"></span>
+    </div>
+  </main>
 </Layout>
