@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <h1>Form Submission</h1>
+  <!-- <form action="/api/form-handler" method="POST"> -->
+  <form action="/form-handler" method="POST">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" name="name" required size="20" />
+    </div>
+    <div>
+      <label for="age">Age:</label>
+      <input type="number" name="age" required />
+    </div>
+    <div>
+      <button>Submit</button>
+    </div>
+  </form>
+</Layout>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  input[type="number"] {
+    width: 3rem;
+  }
+</style>

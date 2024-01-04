@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { categorizeByAge } from "../categorize.ts";
+
+let message = "";
+const { request } = Astro;
+const { method } = request;
+console.log("form-handler.astro: method =", request.method);
+
+if (method === "GET") {
+  const url = new URL(request.url);
+  message = url.searchParams.get("message") || "missing message";
+} else if (method === "POST") {
+  try {
+    const data = await request.formData();
+    const name = data.get("name");
+    const age = Number(data.get("age"));
+    const category = categorizeByAge(age);
+    message = `${name} is a ${category}.`;
+  } catch (error) {
+    message = "Error: " + (error?.message ?? "unknown");
+  }
+}
+---
+
+<Layout>
+  <h1>Age Assessment</h1>
+  <p>{message}</p>
+</Layout>
