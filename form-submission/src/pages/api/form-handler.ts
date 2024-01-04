@@ -1,6 +1,7 @@
 import type { APIContext, APIRoute } from "astro";
 import { categorizeByAge } from "../../categorize.ts";
 
+// This is used when the form action is "/api/form-handler".
 // This requires SSR configuration!
 export const POST: APIRoute = async ({
   request,

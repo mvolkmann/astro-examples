@@ -5,12 +5,13 @@ import { categorizeByAge } from "../categorize.ts";
 let message = "";
 const { request } = Astro;
 const { method } = request;
-console.log("form-handler.astro: method =", request.method);
 
+// This handles the redirect in src/pages/api/form-handler.ts.
 if (method === "GET") {
   const url = new URL(request.url);
   message = url.searchParams.get("message") || "missing message";
 } else if (method === "POST") {
+  // This is used when the form action is "/form-handler".
   try {
     const data = await request.formData();
     const name = data.get("name");
@@ -18,7 +19,7 @@ if (method === "GET") {
     const category = categorizeByAge(age);
     message = `${name} is a ${category}.`;
   } catch (error) {
-    message = "Error: " + (error?.message ?? "unknown");
+    message = error instanceof Error ? error.message : "unknown error";
   }
 }
 ---
