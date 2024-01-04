@@ -4,15 +4,15 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <main x-data="{ react: 1 }">
+  <main x-data="{ count: 1 }">
     <div>
-      <button @click="react++">Increment</button>
-      <span x-text="react"></span>
+      <button @click="count++">Increment</button>
+      <span x-text="count"></span>
 
       <Counter
-        :count="react"
+        :count="count"
         label="React"
-        setCount={(count: number) => ($data.react = count)}
+        setCount={(count: number) => ($data.count = count)}
         client:load
       />
     </div>
