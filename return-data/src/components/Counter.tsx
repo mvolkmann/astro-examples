@@ -5,7 +5,8 @@ interface Props {
   label?: string;
 }
 
-const Counter: FC<Props> = ({ count = 0, label = "" }) => {
+const Counter: FC<Props> = ({ count, label = "" }) => {
+  console.log("Counter.tsx : count =", count);
   const [value, setValue] = useState(count);
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>

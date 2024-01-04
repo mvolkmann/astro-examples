@@ -1,6 +1,7 @@
 <script>
+  export let count;
   export let label = "";
-  export let count = 0;
+  console.log("Counter.svelte : count =", count);
 </script>
 
 <div class="row">
