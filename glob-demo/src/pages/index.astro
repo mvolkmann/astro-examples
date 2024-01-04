@@ -1,5 +1,6 @@
 ---
 const teams = await Astro.glob("../data/nfl/*.md");
+// const teams = await Astro.glob("../data/json/*.json");
 ---
 
 <html lang="en">
@@ -18,9 +19,21 @@ const teams = await Astro.glob("../data/nfl/*.md");
           <h2>
             {frontmatter.name} {frontmatter.city}
           </h2>
+          <img alt="team logo" src={frontmatter.logoUrl} width={50} />
           <Content />
         </div>
       ))
     }
+    <!-- {
+      teams.map(({ city, content, logoUrl, name }) => (
+        <div>
+          <h2>
+            {name} {city}
+          </h2>
+          <img alt="team logo" src={logoUrl} width={50} />
+          <p>{content}</p>
+        </div>
+      ))
+    } -->
   </body>
 </html>
