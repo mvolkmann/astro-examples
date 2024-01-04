@@ -1,0 +1,14 @@
+---
+import Counter1 from "../components/Counter.tsx";
+import Counter2 from "../components/Counter.svelte";
+import Counter3 from "../components/Counter.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <h1>Returning Data</h1>
+  <Counter1 label="React" client:only="react" />
+  <Counter2 label="Svelte" client:only="svelte" />
+  <!-- client:* directives cannot be applied to Astro components. -->
+  <Counter3 label="Astro" />
+</Layout>
