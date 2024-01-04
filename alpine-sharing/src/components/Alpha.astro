@@ -1,0 +1,11 @@
+---
+import Beta from "./Beta.astro";
+
+type Props = {
+  score: number;
+};
+
+const { score } = Astro.props;
+---
+
+<Beta {score} />
