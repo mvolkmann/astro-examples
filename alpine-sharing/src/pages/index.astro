@@ -1,11 +1,10 @@
 ---
-import Alpha from "../components/Alpha.astro";
+import Demo from "../components/Demo.astro";
 ---
 
 <html lang="en">
   <body x-data="{score: 19}">
-    <h1>Astro</h1>
     <p>score = <span x-text="score"></span></p>
-    <Alpha x-bind:score="score" />
+    <Demo x-bind:score="score" />
   </body>
 </html>
