@@ -1,14 +1,12 @@
 ---
-import Counter1 from "../components/Counter.tsx";
-// import Counter2 from "../components/Counter.svelte";
-// import Counter3 from "../components/Counter.astro";
+import Counter from "../components/Counter.tsx";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
   <main x-data="{react: 1}">
     <div>
-      <Counter1
+      <Counter
         :count="react"
         label="React"
         setCount={(count: number) => ($data.react = count)}
