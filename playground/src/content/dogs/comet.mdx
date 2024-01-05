@@ -7,10 +7,12 @@ website: https://www.akc.org/dog-breeds/whippet/
 
 import Greet from '../../components/Greet.astro';
 
+<Greet name={frontmatter.name} />
+
 He loves the following:
 
 - pool balls
 - basketballs
 - frisbees
 
-<Greet name="Comet" />
+Learn about the <a href={frontmatter.website}>{frontmatter.breed}</a>.

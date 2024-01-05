@@ -14,9 +14,12 @@ import SelectScore from '../components/SelectScore.astro';
 
   <main x-data x-init="topSetup($data)">
     <Counter1 label="React" client:only="react" />
+    <br />
     <Counter2 label="Svelte" client:only="svelte" />
+    <br />
     <!-- client:* directives cannot be applied to Astro components. -->
-    <Counter3 label="Astro" />
+    <Counter3 label="Alpine" />
+    <br />
 
     <RenderDog />
     <button @click="toggleDog">Toggle Dog</button>
