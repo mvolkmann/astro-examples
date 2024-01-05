@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+console.log('[team].astro : Astro.params =', Astro.params);
+const { sport, team } = Astro.params;
+---
+
+<Layout>
+<div>{team} plays {sport}.</div>
+</Layout>
