@@ -1,9 +1,4 @@
----
-type Props = {
-  score: number;
-};
-
-const { score } = Astro.props;
----
-
-<p>The score is {score}.</p>
+<div x-data="{ double() { score *= 2; } }">
+  <p>Demo score = <span x-text="score"></span></p>
+  <button @click="double">Double it!</button>
+</div>

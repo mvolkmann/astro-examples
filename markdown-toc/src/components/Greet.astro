@@ -1,0 +1,17 @@
+---
+type Props = {
+  name: string;
+};
+
+const { name } = Astro.props;
+---
+
+<div>Hello, {name}!</div>
+
+<style>
+  div {
+    color: purple;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+</style>

@@ -2,9 +2,9 @@
 import Demo from "../components/Demo.astro";
 ---
 
-<html lang="en">
+<html>
   <body x-data="{score: 19}">
-    <p>score = <span x-text="score"></span></p>
-    <Demo x-bind:score="score" />
+    <p>index score = <span x-text="score"></span></p>
+    <Demo />
   </body>
 </html>
