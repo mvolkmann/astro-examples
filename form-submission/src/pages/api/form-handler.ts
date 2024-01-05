@@ -4,6 +4,7 @@ import { categorizeByAge } from "../../categorize.ts";
 // This is used when the form action is "/api/form-handler".
 // This requires SSR configuration.
 export const POST: APIRoute = async ({
+  redirect,
   request,
 }: APIContext): Promise<Response> => {
   const data = await request.formData();
@@ -11,12 +12,5 @@ export const POST: APIRoute = async ({
   const age = Number(data.get("age"));
   const category = categorizeByAge(age);
   const message = `${name} is ${category}.`;
-
-  return new Response("", {
-    status: 302, // redirect
-    headers: {
-      // "Cache-Control": "no-cache, no-store, must-revalidate",
-      Location: `/form-handler?message=${message}`,
-    },
-  });
+  return redirect(`/form-handler?message=${message}`, 302);
 };
