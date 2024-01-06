@@ -2,12 +2,6 @@
 import {Image} from 'astro:assets';
 import { Icon } from "astro-icon/components";
 
-// This import doesn't work, but including it
-// with a script tag in Layout.astro does work.
-// See https://github.com/catdad/canvas-confetti/issues/220.
-// @ts-ignore
-// import confetti from "canvas-confetti";
-
 import Border from '@components/Border.astro';
 import Counter1 from '@components/Counter.astro';
 import Counter2 from '@components/Counter.svelte';
@@ -26,7 +20,6 @@ const icons = [
 ];
 
 // import dogs from "../data/dogs.json";
-/* global confetti */
 ---
 
 <Layout title="Welcome to Astro">
@@ -59,10 +52,10 @@ const icons = [
   </main>
 </Layout>
 
-<!-- <script type="module"> -->
 <script>
+  import confetti from "canvas-confetti";
+
   function handleClick() {
-    // @ts-ignore
     confetti({
       particleCount: 100,
       spread: 180,
