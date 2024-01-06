@@ -1,10 +1,17 @@
 ---
 import Layout from '@layouts/Layout.astro';
 
-console.log('[team].astro : Astro.params =', Astro.params);
+export function getStaticPaths() {
+  return [
+    { params: { sport: 'baseball', team: 'Cardinals' } },
+    { params: { sport: 'football', team: 'Chiefs' } },
+    { params: { sport: 'hockey', team: 'Blues' } }
+  ];
+}
+
 const { sport, team } = Astro.params;
 ---
 
 <Layout>
-<div>The {team} plays {sport}.</div>
+  <div>The {team} plays {sport}.</div>
 </Layout>
