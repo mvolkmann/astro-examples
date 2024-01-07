@@ -30,10 +30,10 @@ const entries = await Promise.all(promises);
     <h1>Page {currentPage} of {lastPage}</h1>
     <p>The teams appear alphabetically by their city.</p>
     <nav>
-      <a href="/">First</a>
-      <a class={prevUrl ? '' : 'disabled'} href={prevUrl}>Previous</a>
-      <a class={nextUrl ? '' : 'disabled'} href={nextUrl}>Next</a>
-      <a href={`/${lastPage}`}>Last</a>
+      <a class:list={{disabled: currentPage === 1}} href="/">First</a>
+      <a class:list={{disabled: !prevUrl}} href={prevUrl}>Previous</a>
+      <a class:list={{disabled: !nextUrl}} href={nextUrl}>Next</a>
+      <a class:list={{disabled: currentPage === lastPage}} href={`/${lastPage}`}>Last</a>
       <a href="/all">All</a>
     </nav>
     <section class="gap-4 grid grid-cols-4">
